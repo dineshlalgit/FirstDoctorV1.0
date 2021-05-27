@@ -33,17 +33,17 @@
                 android:layout_height="96dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="895dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginBottom="-41dp"
+                android:layout_marginLeft="895dp"
                 android:layout_marginTop="-50dp"
+                android:layout_marginBottom="-41dp"
                 android:src="@drawable/profile" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="50dp">
+                android:layout_marginStart="50dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView"
@@ -94,8 +94,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:scaleType="fitXY">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -172,8 +172,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:scaleType="fitXY">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -196,8 +196,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="fitXY"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:scaleType="fitXY">
 
                             <TextView
                                 android:id="@+id/textView5"
