@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Examination_one">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/examination_progress" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="INFO"
+                    android:textColor="@color/inactive_color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="COMPLAIN"
+                    android:textColor="@color/inactive_color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="HISTORY"
+                    android:textColor="@color/inactive_color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="EXAMINATION"
+                    android:textColor="#434242"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="Patient Examination"
+                android:textColor="#4146C8"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="Please select the areas of the mouth you want doctor to look at."
+                android:textAlignment="textStart"
+                android:textColor="#4146C8"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:buttonTint="#4146C8"
+                android:text="Lips"
+                android:textColor="#4146C8"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:buttonTint="#4146C8"
+                android:text="Tongue"
+                android:textColor="#4146C8"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:buttonTint="#4146C8"
+                android:text="Floor of mouth"
+                android:textColor="#4146C8"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:buttonTint="#4146C8"
+                android:text="Cheeks"
+                android:textColor="#4146C8"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:buttonTint="#4146C8"
+                android:text="Roof of the mouth"
+                android:textColor="#4146C8"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:buttonTint="#4146C8"
+                android:text="Gums"
+                android:textColor="#4146C8"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="Please take a picture of the problem areas of the mouth and upload the image"
+                android:textAlignment="textStart"
+                android:textColor="#4146C8"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="you can upload upto 5 images (up to max 400 kb can uploaded)"
+                android:textAlignment="textStart"
+                android:textColor="#4146C8"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#4146C8"
+                android:drawableLeft="@drawable/ic_baseline_photo_camera_24"
+                android:drawableTint="#8387F8"
+                android:hint="Take photos/upload images"
+                android:textColor="#4146C8"
+                android:textColorHint="#8387F8"
+                tools:ignore="UnusedAttribute" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
