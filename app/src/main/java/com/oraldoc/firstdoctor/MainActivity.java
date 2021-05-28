@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -29,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
         google_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent SignInGoogleB = new Intent(MainActivity.this, Info.class);
-                startActivity(SignInGoogleB);
+                Toast.makeText(MainActivity.this, "Google sign button in progress", Toast.LENGTH_SHORT).show();
+//                Intent SignInGoogleB = new Intent(MainActivity.this, Info.class);
+//                startActivity(SignInGoogleB);
             }
         });
         signIn_bt.setOnClickListener(new View.OnClickListener() {

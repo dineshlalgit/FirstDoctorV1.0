@@ -1,597 +1,595 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".History_two"
-    android:orientation="vertical">
-    <ScrollView
+    tools:context=".History_two">
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/history_pogress" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="INFO"
-                    android:textColor="@color/inactive_color"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="COMPLAIN"
-                    android:textColor="@color/inactive_color"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="HISTORY"
-                    android:textColor="#434242"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="EXAMINATION"
-                    android:textColor="@color/inactive_color"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Patient Habits and Hygiene"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="How many times a do you brush our teeth? "
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Once"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Twice"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="I don't brush daily"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Do you floss your teeth? "
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Yes"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="No"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Do you use mouthwash?"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Yes"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="No"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Tobacco habits"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Yes"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="No"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Smoke from"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Cigarette"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Bedi"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Cigar"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Hokka"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Smokeless from or Chewing type"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Pan"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Tobacco"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Supari"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Jharda"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_weight="0"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/history_pogress"
+                tools:srcCompat="@drawable/history_pogress" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Sukka"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Any Other, Mention"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <EditText
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="5dp"
-                    android:backgroundTint="#4146C8"
-                    android:hint="other"
-                    android:textColor="#4146C8"
-                    android:textColorHint="#8387F8"
-                    tools:ignore="UnusedAttribute" />
+                    android:layout_marginTop="50dp"
+                    android:layout_weight="8"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Info"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Complaints"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="History"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="#0000E4"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Examination"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                </LinearLayout>
 
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Duration"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Less than 5 years"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="5 to 10 years"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-
-
-
-            </LinearLayout>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:buttonTint="#4146C8"
-                android:text="More than 10 years"
-                android:textColor="#4146C8"
-                tools:ignore="UnusedAttribute" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Frequency per day"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Less than 1 pack"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="1-3 pack"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-
-
-
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text=" Alcohol habit"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Yes"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="No"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-
-
-
-
-
-            </LinearLayout>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nextH_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_margin="15dp"
-                android:background="@drawable/nextbt_shape"
-                android:text="Next"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/design_default_color_primary_dark" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvcurrentaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txtviewComp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="#4146C8"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:text="Patient Habits and Hygiene "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <TextView
+                        android:id="@+id/tvradiobutn6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:text="How many times a day do you brush your teeth?"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="1 times a day"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="2 times a day"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_dont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Not daily"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:text="Do you floss your teeth? "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_flossyes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_flossno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Do you use mouth wash"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_mouthwashyes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_mouthwashno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Tobacco habits?"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:textSize="18sp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_tobaccoyes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_tobaccono"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Smoke form:"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:orientation="vertical">
+
+                        <RadioButton android:id="@+id/radio_cigarette"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cigarette"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_bedi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bedi"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_cigar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cigar"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_hookka"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hookka"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_nosmoke"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Smokeless from or Chewing type "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:orientation="vertical">
+
+                        <RadioButton android:id="@+id/radio_pan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Paan"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_chewtobacco"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chew Tobacco"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_supari"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arcanut (Supari)"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_jhartha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jhartha"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_sukha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sukha"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_chewtypeother"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Other(Mention)"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tftilay_otherchew"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            android:buttonTint="#4146C8"
+                            android:textColor="#4146C8"
+                            android:textStyle="bold"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:hint="Pls mention the Condition " />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Duration?"
+                        android:buttonTint="#4146C8"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_less5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Less than 5 yrs"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_more5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5 to 10yrs"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_more10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="More than 10 years"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Frequency per day?"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onRadioButtonClicked"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:orientation="vertical">
+
+                        <RadioButton android:id="@+id/radio_less1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Less than 1 pack"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_more1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 to 3 pack"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_more3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="More than 3 pack"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Alcohol Habits?"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onRadioButtonClicked"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_alcoyes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Yes"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_alcono"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="No"
+                            android:onClick="onRadioButtonClicked"/>
+
+
+                    </RadioGroup>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnhistory"
+                        android:onClick="onNextButtonClick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/nextbt_shape"
+                        android:text="Next"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,558 +1,540 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".Complain">
 
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:layout_weight="0"
+                android:scaleType="fitXY"
+                android:src="@drawable/complain_progress"
+                tools:srcCompat="@drawable/complain_progress" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_weight="8"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/complain_progress" />
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="INFO"
-                    android:textColor="@color/inactive_color"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:text="Info"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="COMPLAIN"
-                    android:textColor="#434242"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:text="Complaints"
+                    android:textColor="#0000E4"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="HISTORY"
-                    android:textColor="@color/inactive_color"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:text="History"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text="EXAMINATION"
-                    android:textColor="@color/inactive_color"
-                    android:textStyle="bold" />
-
+                    android:layout_weight="1"
+                    android:text="Examination"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Patient Complain"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Pleae type the patient's main complain here in your own words."
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#4146C8"
-                android:hint="Enter here..."
-                android:textColor="#4146C8"
-                android:textColorHint="#8387F8"
-                tools:ignore="UnusedAttribute" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="I am having"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Pain"
-                    android:textColor="#4146C8"
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Swelling"
-                    android:textColor="#4146C8"
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Growth"
-                    android:textColor="#4146C8"
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Inability to open mouth"
-                    android:textColor="#4146C8"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Discolored Oral mucosa"
-                    android:textColor="#4146C8"
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Teeth Alignment issue"
-                    android:textColor="#4146C8"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:buttonTint="#4146C8"
-                android:text="Bleeding gums"
-                android:textColor="#4146C8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="I am having the symptoms on ____ side of jaw."
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Right"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Left"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Upper"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Lower"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="I am having the symptoms for the past ____ (1-100)."
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Weeks"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Months"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Years"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Pain to which I am having is"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Sharp"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Dull"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Throbbing"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="No pain"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Continuous Pain"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Intermittent pain"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Pain increases on"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Hot Food"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Cold Food"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="others, Mention"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-            </LinearLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#4146C8"
-                android:hint="Others"
-                android:textColor="#4146C8"
-                android:textColorHint="#8387F8"
-                tools:ignore="UnusedAttribute" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Pain decreases on"
-                android:textAlignment="textStart"
-                android:textColor="#4146C8"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Hot Food"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="Cold Food"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:buttonTint="#4146C8"
-                    android:text="others, Mention"
-                    android:textColor="#4146C8"
-                    tools:ignore="UnusedAttribute" />
-
-
-            </LinearLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#4146C8"
-                android:hint="Others"
-                android:textColor="#4146C8"
-                android:textColorHint="#8387F8"
-                tools:ignore="UnusedAttribute" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/next_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_margin="15dp"
-                android:background="@drawable/nextbt_shape"
-                android:text="Next"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvcurrentaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txtviewComp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Patients Complaints"
+                        android:textColor="#4146C8"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <TextView
+                        android:id="@+id/txtviewComp1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Please describe your problem below:"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+
+                    <EditText
+                        android:id="@+id/editTextTextMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine" />
+
+                    <TextView
+                        android:id="@+id/txtviewComp2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Please check whichever you feel your suffering from:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <CheckBox
+                                android:id="@+id/chkbxBleeding"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Bleeding Gums" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxInability"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Inability to open mouth" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxDiscolored"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Discolored oral mucosa" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxTeeth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Teeth Alignmet issues" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <CheckBox
+                                android:id="@+id/chkbxSwelling"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Swelling" />
+
+                            <CheckBox
+                                android:id="@+id/ckkbxgrowth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Growth" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxPain"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:text="Pain" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Having symtoms/problems in _______ side of jaw."
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:orientation="vertical">
+
+                        <RadioButton android:id="@+id/radio_rightjaw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Right Jaw"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/radio_leftjaw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lest Jaw"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/radio_upperjaw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Upper Jaww"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/radio_lowerjaw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lower Jaw"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Having symtoms/problems from the past_______ ."
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_week"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Weeks"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Months"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_years"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Years"
+                            android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+                    <TextView
+                        android:id="@+id/tvradiobutn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#4146C8"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Pain which im asking is_______ ."
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton android:id="@+id/radio_sharp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Sharp"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_dull"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Dull"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_throbbing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Throbbing"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_nopain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No Pain"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_continuous"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Continuous Pain"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_intermittent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Intermittent pain"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pain Increased on_______ ."
+                        android:textColor="#4146C8"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:onClick="onRadioButtonClicked">
+
+                        <RadioButton android:id="@+id/radio_hotfood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hot Foods"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_coldfood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Clod Foods"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Other (Pls mention)"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tftilay_other"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="2dp"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:hint="Pls mention the reason " />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pain Decreases on_______ ."
+                        android:textColor="#4146C8"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:onClick="onRadioButtonClicked">
+
+                        <RadioButton android:id="@+id/radio_hotfooddec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hot Foods"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_coldfooddec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Clod Foods"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_otherdec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Other (Pls mention)"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tftilay_otherdec"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#4146C8"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:hint="Pls mention the reason " />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttoncomplain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/nextbt_shape"
+                        android:text="Next"
+                        android:onClick="onNextButtonClick"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

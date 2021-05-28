@@ -6,20 +6,42 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class History_one extends AppCompatActivity {
-AppCompatButton next_hb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_one);
-        next_hb=findViewById(R.id.nextHOne_button);
-        next_hb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextB = new Intent(History_one.this, History_two.class);
-                startActivity(nextB);
-            }
-        });
     }
+    public void onNextButtonClick(View v){
+        if(v.getId ()==R.id.btnhistory){
+            Intent nxt = new Intent(History_one.this,History_two.class);
+            startActivity(nxt);
+        }
+    }
+    public void onRadioButtonClicked(View view) {
+        TextInputLayout tilother = (TextInputLayout)findViewById(R.id.tftilay_otherdec);
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+
+            case R.id.radio_no:
+                if (checked)
+                    tilother.setVisibility(View.GONE);
+                break;
+            case R.id.radio_yes:
+                if (checked)
+                    tilother.setVisibility(View.VISIBLE);
+                break;
+
+
+
+        }
+    }
+
 }

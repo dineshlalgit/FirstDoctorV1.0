@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -65,7 +65,7 @@
             <com.google.android.material.card.MaterialCardView
                 style="@style/CustomCardCorners"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:background="@drawable/bt_shape"
                 app:cardElevation="5dp">
@@ -124,10 +124,9 @@
                                 android:textColor="#FFFFFF" />
 
                             <Button
-                                android:id="@+id/button"
+                                android:id="@+id/btnfillform"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
-
                                 android:layout_marginStart="30dp"
                                 android:layout_marginLeft="30dp"
                                 android:layout_marginTop="8dp"
@@ -136,6 +135,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/bt_shape"
+                                android:onClick="onNextButtonClick"
                                 android:text="Fill this form >"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="#000000"
@@ -217,7 +217,6 @@
                                 android:id="@+id/btnconult"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
-
                                 android:layout_marginStart="30dp"
                                 android:layout_marginLeft="30dp"
                                 android:layout_marginTop="8dp"
@@ -226,6 +225,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/bt_shape"
+                                android:onClick="onNextButtonClick"
                                 android:text="Consultation>"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="#000000"
@@ -236,7 +236,6 @@
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
 
 
         </LinearLayout>
