@@ -151,6 +151,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Hyper Tension" />
 
                             <CheckBox
@@ -161,6 +162,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Under Medication" />
 
 
@@ -172,6 +174,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Bleeding/Blood Disorder" />
 
                             <CheckBox
@@ -182,6 +185,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Cardiac Problems" />
 
                             <CheckBox
@@ -192,6 +196,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Gastric problems" />
 
                             <CheckBox
@@ -199,10 +204,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:text="Underwent Recent Surgery"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:text="Underwent Recent Surgery" />
+                                android:onClick="onCheckboxClicked"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -212,24 +218,26 @@
                             android:orientation="vertical">
 
                             <CheckBox
-                                android:id="@+id/chkbxAlergy"
+                                android:id="@+id/chkbxAllergy"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
-                                android:text="Alergy" />
+                                android:onClick="onCheckboxClicked"
+                                android:text="Allergy" />
 
                             <CheckBox
-                                android:id="@+id/ckkbxAthma"
+                                android:id="@+id/ckbxAsthma"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
-                                android:text="Athma " />
+                                android:onClick="onCheckboxClicked"
+                                android:text="Asthma " />
 
                             <CheckBox
                                 android:id="@+id/chkbxJaundice"
@@ -239,6 +247,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Jaundice" />
 
 
@@ -250,6 +259,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Diabetic" />
 
                             <CheckBox
@@ -260,6 +270,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Epilepsy" />
 
                         </LinearLayout>
@@ -302,7 +313,7 @@
 
                     </RadioGroup>
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tftilay_otherdec"
+                        android:id="@+id/tftilay_othercondition"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"
@@ -312,6 +323,7 @@
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tiet_otherconditionValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#4146C8"

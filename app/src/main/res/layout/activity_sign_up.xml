@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_color"
     android:orientation="vertical"
     tools:context=".SignUp">
@@ -51,74 +52,151 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bt_shape"
+                android:hint="Name"
+                android:maxLength="50" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bt_shape"
+                android:hint="Age"
+                android:maxLength="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="@string/first_name"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bt_shape"
+            android:orientation="horizontal">
 
-            android:textColor="@color/white"
-            android:textColorHint="#707070"
-            tools:ignore="UnusedAttribute" />
+            <TextView
+                android:id="@+id/tvradiobutn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Sex : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#4146C8"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <EditText
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Male"
+                android:textColor="#4146C8"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Female"
+                android:textColor="#4146C8"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radio_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Other"
+                android:textColor="#4146C8"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="@string/last_name"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="#707070"
-            tools:ignore="UnusedAttribute" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="@string/age"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="#707070"
-            tools:ignore="UnusedAttribute" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bt_shape"
+                android:hint="Email Id"
+                android:maxLength="60" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="@string/address"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="#707070"
-            tools:ignore="UnusedAttribute" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="@string/email"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="#707070"
-            tools:ignore="UnusedAttribute" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietmobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bt_shape"
+                android:hint="10 Digit Mobile Number"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="@string/password"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="#707070"
-            tools:ignore="UnusedAttribute" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bt_shape"
+                android:hint="Password"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietPasswordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bt_shape"
+                android:hint="Confirm Password"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="480dp"
         android:background="@drawable/bt_shape"
+        android:onClick="onNextButtonClick"
         android:text="@string/sign_up"
         android:textColor="@color/bg_color"
         android:textSize="20sp"

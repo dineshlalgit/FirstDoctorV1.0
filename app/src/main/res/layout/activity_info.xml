@@ -101,10 +101,12 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tietname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:hint="Name" />
+                            android:hint="Name"
+                            android:maxLength="50" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -112,10 +114,12 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tietage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:hint="Age" />
+                            android:hint="Age"
+                            android:maxLength="3" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -171,10 +175,12 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tietaddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:hint="Address" />
+                            android:hint="Address"
+                            android:maxLength="500" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -182,10 +188,12 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tietcity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:hint="City/Town/Village" />
+                            android:hint="City/Town/Village"
+                            android:maxLength="100" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -193,10 +201,12 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tietzip"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:hint="Zip Code" />
+                            android:hint="Zip Code"
+                            android:maxLength="6" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -204,29 +214,33 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tietmobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:hint="Mobile Number" />
+                            android:hint="10 Digit Mobile Number"
+                            android:maxLength="10" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <CheckBox
-                        android:id="@+id/checkBox2"
+                        android:id="@+id/checkBoxAgreeInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:onClick="onCheckboxClicked"
                         android:text="Agreed to Share my data with FirstDoctor's Docters." />
 
                     <CheckBox
-                        android:id="@+id/checkBox3"
+                        android:id="@+id/checkBoxConsent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:onClick="onCheckboxClicked"
                         android:text="Conset form/informed consent" />
 
                     <androidx.appcompat.widget.AppCompatButton

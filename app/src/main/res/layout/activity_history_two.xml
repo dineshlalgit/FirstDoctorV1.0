@@ -129,9 +129,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <RadioButton android:id="@+id/radio_one"
+                        <RadioButton android:id="@+id/radio_brushone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#4146C8"
@@ -140,7 +140,7 @@
                             android:text="1 times a day"
                             android:onClick="onRadioButtonClicked"/>
 
-                        <RadioButton android:id="@+id/radio_two"
+                        <RadioButton android:id="@+id/radio_brushtwo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#4146C8"
@@ -149,7 +149,7 @@
                             android:text="2 times a day"
                             android:onClick="onRadioButtonClicked"/>
 
-                        <RadioButton android:id="@+id/radio_dont"
+                        <RadioButton android:id="@+id/radio_brushdont"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Not daily"
@@ -387,7 +387,7 @@
                         <RadioButton android:id="@+id/radio_supari"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Arcanut (Supari)"
+                            android:text="Arecanut (Supari)"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -431,6 +431,7 @@
                             android:layout_weight="1">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tftilay_otherchewValue"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4146C8"
@@ -457,7 +458,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <RadioButton android:id="@+id/radio_less5"
                             android:layout_width="wrap_content"

@@ -152,16 +152,18 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Lips" />
 
                             <CheckBox
-                                android:id="@+id/ckkbxTongue"
+                                android:id="@+id/ckbxTongue"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Tongue" />
 
                             <CheckBox
@@ -172,6 +174,7 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Floor of mouth" />
 
                         </LinearLayout>
@@ -189,6 +192,7 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Cheeks" />
 
                             <CheckBox
@@ -199,6 +203,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Roof of the mouth" />
 
                             <CheckBox
@@ -209,6 +214,7 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Gums" />
                         </LinearLayout>
 

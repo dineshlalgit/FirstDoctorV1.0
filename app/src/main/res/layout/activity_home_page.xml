@@ -19,26 +19,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="408dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="3dp"
-                app:srcCompat="@drawable/teeth" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/proifilepic"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="895dp"
-                android:layout_marginTop="-50dp"
-                android:layout_marginBottom="-41dp"
-                android:src="@drawable/profile" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,11 +26,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tvUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Hi Thomas"
+                    android:layout_marginTop="10dp"
+                    android:text="Hi User"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <TextView

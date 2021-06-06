@@ -119,13 +119,15 @@
 
 
                     <EditText
-                        android:id="@+id/editTextTextMultiLine"
+                        android:id="@+id/etPrblm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine" />
+                        android:hint="Describe your problem here"
+                        android:inputType="textMultiLine"
+                        android:maxLength="1000" />
 
                     <TextView
                         android:id="@+id/txtviewComp2"
@@ -138,59 +140,6 @@
                         android:textStyle="bold"
                         android:text="Please check whichever you feel your suffering from:"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <CheckBox
-                                android:id="@+id/chkbxBleeding"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:text="Bleeding Gums" />
-
-                            <CheckBox
-                                android:id="@+id/chkbxInability"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:text="Inability to open mouth" />
-
-                            <CheckBox
-                                android:id="@+id/chkbxDiscolored"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:text="Discolored oral mucosa" />
-
-                            <CheckBox
-                                android:id="@+id/chkbxTeeth"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:text="Teeth Alignmet issues" />
-                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -205,6 +154,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Swelling" />
 
                             <CheckBox
@@ -215,6 +165,7 @@
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
                                 android:text="Growth" />
 
                             <CheckBox
@@ -224,12 +175,54 @@
                                 android:layout_weight="1"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
+                                android:onClick="onCheckboxClicked"
                                 android:textStyle="bold"
                                 android:text="Pain" />
 
+                            <CheckBox
+                                android:id="@+id/chkbxBleeding"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Bleeding Gums" />
 
+                            <CheckBox
+                                android:id="@+id/chkbxInability"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Inability to open mouth" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxDiscolored"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Discolored oral mucosa" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxTeeth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Teeth Alignmet issues" />
                         </LinearLayout>
-                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvradiobutn"
@@ -241,45 +234,49 @@
                         android:textStyle="bold"
                         android:text="Having symtoms/problems in _______ side of jaw."
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:orientation="vertical">
 
-                        <RadioButton android:id="@+id/radio_rightjaw"
-                            android:layout_width="wrap_content"
+                        <CheckBox
+                            android:id="@+id/chkbxrightjaw"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Right Jaw"
+                            android:layout_weight="1"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:onClick="onRadioButtonClicked"/>
-                        <RadioButton android:id="@+id/radio_leftjaw"
-                            android:layout_width="wrap_content"
+                            android:onClick="onCheckboxClicked"
+                            android:text="Right Jaw" />
+
+                        <CheckBox
+                            android:id="@+id/chkbxleftjaw"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Lest Jaw"
+                            android:layout_weight="1"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:onClick="onRadioButtonClicked"/>
-                        <RadioButton android:id="@+id/radio_upperjaw"
-                            android:layout_width="wrap_content"
+                            android:onClick="onCheckboxClicked"
+                            android:text="Left Jaw" />
+
+                        <CheckBox
+                            android:id="@+id/chkbxupperjaw"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:text="Upper Jaww"
-                            android:onClick="onRadioButtonClicked"/>
-                        <RadioButton android:id="@+id/radio_lowerjaw"
-                            android:layout_width="wrap_content"
+                            android:onClick="onCheckboxClicked"
+                            android:text="Upper Jaw" />
+                        <CheckBox
+                            android:id="@+id/chkbxlowerjaw"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Lower Jaw"
+                            android:layout_weight="1"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:onClick="onRadioButtonClicked"/>
-                    </RadioGroup>
+                            android:onClick="onCheckboxClicked"
+                            android:text="Lower Jaw" />
 
                     <TextView
                         android:id="@+id/tvradiobutn2"
@@ -291,6 +288,27 @@
                         android:textStyle="bold"
                         android:text="Having symtoms/problems from the past_______ ."
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="#4146C8"
+                        android:textStyle="bold"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tftilay_sufferingdays"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Days"
+                            android:maxLength="2"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -332,7 +350,7 @@
                         android:layout_marginTop="20dp"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="Pain which im asking is_______ ."
+                        android:text="Pain which im suffering from is_______ ."
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <RadioGroup
                         android:layout_width="match_parent"
@@ -423,7 +441,7 @@
                         <RadioButton android:id="@+id/radio_coldfood"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Clod Foods"
+                            android:text="Cold Foods"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -432,7 +450,7 @@
                         <RadioButton android:id="@+id/radio_other"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Other (Pls mention)"
+                            android:text="Other"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -440,7 +458,7 @@
 
                     </RadioGroup>
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tftilay_other"
+                        android:id="@+id/tftilay_otherPainIncrease"
                         android:layout_width="match_parent"
                         android:layout_marginTop="2dp"
                         android:layout_height="match_parent"
@@ -448,12 +466,14 @@
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tftilay_otherPainIncreaseValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Pls mention the reason "
+                            android:maxLength="50"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:hint="Pls mention the reason " />
+                            android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -484,7 +504,7 @@
                         <RadioButton android:id="@+id/radio_coldfooddec"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Clod Foods"
+                            android:text="Cold Foods"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -493,7 +513,7 @@
                         <RadioButton android:id="@+id/radio_otherdec"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Other (Pls mention)"
+                            android:text="Other"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -501,7 +521,7 @@
 
                     </RadioGroup>
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tftilay_otherdec"
+                        android:id="@+id/tftilay_otherPainDecrease"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"
@@ -512,6 +532,7 @@
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tftilay_otherPainDecreaseValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#4146C8"
@@ -527,8 +548,9 @@
                         android:layout_gravity="end"
                         android:layout_margin="15dp"
                         android:background="@drawable/nextbt_shape"
-                        android:text="Next"
+                        android:maxLength="50"
                         android:onClick="onNextButtonClick"
+                        android:text="Next"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
