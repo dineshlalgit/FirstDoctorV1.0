@@ -17,7 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -130,8 +131,8 @@
                         android:layout_weight="5"
                         android:baselineAlignBottom="false"
                         android:scaleType="fitXY"
-                        app:srcCompat="@drawable/whiteteeth"
-                        tools:srcCompat="@drawable/whiteteeth">
+                        app:srcCompat="@drawable/teethproblem"
+                        tools:srcCompat="@drawable/teethproblem">
 
                     </ImageView>
 
@@ -160,9 +161,9 @@
                         android:layout_height="100dp"
                         android:layout_weight="2"
                         android:baselineAlignBottom="false"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/whitedamagedteeth"
-                        tools:srcCompat="@drawable/whitedamagedteeth">
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/doctorteeth"
+                        tools:srcCompat="@drawable/doctorteeth">
 
                     </ImageView>
 

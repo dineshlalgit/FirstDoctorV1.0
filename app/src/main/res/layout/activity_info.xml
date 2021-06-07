@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -106,7 +107,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Name"
-                            android:maxLength="50" />
+                            android:maxLength="50"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +122,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Age"
-                            android:maxLength="3" />
+                            android:maxLength="2"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -180,7 +185,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Address"
-                            android:maxLength="500" />
+                            android:maxLength="500"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -193,7 +200,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="City/Town/Village"
-                            android:maxLength="100" />
+                            android:maxLength="100"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -206,7 +215,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Zip Code"
-                            android:maxLength="6" />
+                            android:maxLength="6"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -219,7 +230,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="10 Digit Mobile Number"
-                            android:maxLength="10" />
+                            android:maxLength="10"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <CheckBox

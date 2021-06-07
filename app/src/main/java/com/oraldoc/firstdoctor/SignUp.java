@@ -83,11 +83,11 @@ public class SignUp extends AppCompatActivity {
 
         if(v.getId ()==R.id.btn_signup){
 
-            if (stringName.isEmpty() || stringName.length()<3 || (!stringName.matches("[A-Za-z0-9 ]*"))){
+            if (stringName.isEmpty() || stringName.length()<3 || (!stringName.matches("[A-Za-z ]*"))){
                 tietName.setError("Mandatory field / Invalid Input");
                 tietName.requestFocus();
             }
-            else if (stringAge.isEmpty() || stringAge.length()>2 || (!stringAge.matches("[A-Za-z0-9]*"))){
+            else if (stringAge.isEmpty() || stringAge.length()>2 || (!stringAge.matches("[0-9]*"))){
                 tietAge.setError("Mandatory field / Invalid Input");
                 tietAge.requestFocus();
             }
@@ -102,7 +102,7 @@ public class SignUp extends AppCompatActivity {
                 tietMobile.setError("Mandatory field / Invalid Input");
                 tietMobile.requestFocus();
             }
-            else if (stringPassword.isEmpty() || stringPassword.length() < 8 || (!stringPassword.matches("[A-Za-z0-9]*"))) {
+            else if (stringPassword.isEmpty() || stringPassword.length() < 8 || (!stringPassword.matches("[A-Za-z0-9@#$%_]*"))) {
                 tietPassword.setError("Mandatory field / Invalid Input");
                 tietPassword.requestFocus();
 

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         signUp_txt = findViewById(R.id.signUp);
         signIn_bt = findViewById(R.id.signIn_button);
-        google_bt = findViewById(R.id.google_button);
+//        google_bt = findViewById(R.id.google_button);
 
         //Firebase
         mAuth = FirebaseAuth.getInstance();
@@ -76,43 +76,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentuser = mAuth.getCurrentUser();
-        if(currentuser != null){
-            CheckUserExistence();
-        }
-    }
-    private void CheckUserExistence() {
-        final String current_user_id = mAuth.getCurrentUser().getUid();
-        UsersRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.hasChild(current_user_id)) {
-                    SendUserToSignUpActivity();
-                }
-                else {
-                    SendUserToHomePage();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        FirebaseUser currentuser = mAuth.getCurrentUser();
+//        if(currentuser != null){
+//            CheckUserExistence();
+//        }
+//    }
+//    private void CheckUserExistence() {
+//        final String current_user_id = mAuth.getCurrentUser().getUid();
+//        UsersRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (!dataSnapshot.hasChild(current_user_id)) {
+//                    SendUserToSignUpActivity();
+//                }
+//                else {
+//                    SendUserToHomePage();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
     private void SendUserToHomePage() {
         Intent LoginIntent = new Intent(this,HomePage.class);
-        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(LoginIntent);
         finish();
     }
     private void SendUserToSignUpActivity() {
         Intent LoginIntent = new Intent(this,SignUp.class);
-        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(LoginIntent);
         finish();
     }
@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 loadingBar.setMessage("Please wait, While we are validating your account.");
                 loadingBar.show();
                 loadingBar.setCanceledOnTouchOutside(true);
+
                 mAuth.signInWithEmailAndPassword(stringEmail,stringPassword)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override

@@ -1,7 +1,11 @@
 package com.oraldoc.firstdoctor;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -9,10 +13,22 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class Complain extends AppCompatActivity {
     private EditText etPrblm;
@@ -23,10 +39,22 @@ public class Complain extends AppCompatActivity {
             strtilotherPainIncrease,strtilotherPainDecrease,stretdays,
             strSufferingTime,strPainType,strPainIncrease,strPainDecrease;
 
+    private FirebaseAuth mAuth;
+    private ProgressDialog loadingBar;
+    private DatabaseReference UsersRef;
+    private StorageReference UserProfileImageRef;
+    String currentUserID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complain);
+
+        loadingBar = new ProgressDialog(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUserID = mAuth.getCurrentUser().getUid();
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
     }
     public String onCheckboxClicked(View view) {
         // Is the view now checked?
@@ -267,6 +295,35 @@ public class Complain extends AppCompatActivity {
         return null;
     }
 
+    public void onBackPressed() {
+        AlertDialog.Builder builderexit;
+        builderexit = new AlertDialog.Builder(this);
+        builderexit.setIcon(R.mipmap.ic_launcher);
+        builderexit.setTitle("Exit")
+                .setMessage("Do you really want go back \nData will not be saved")
+                .setPositiveButton("Yes,Go back to Homepage", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            dialog.dismiss();
+                            Intent LoginIntent = new Intent(Complain.this, HomePage.class);
+                            LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(LoginIntent);
+                        } else {
+                            finish();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+
+    }
+
     public void onNextButtonClick(View v){
 
         String stringChkboxckdSuffering,stringChkboxckdTime,stretPrblm;
@@ -338,9 +395,96 @@ public class Complain extends AppCompatActivity {
                     tilotherPainDecrease.requestFocus();
             }
             else{
-                Intent nxt = new Intent(Complain.this,History_one.class);
-                startActivity(nxt);
+                loadingBar.setTitle("Saving Details");
+                loadingBar.setMessage("Please wait, While we are saving your details.");
+                loadingBar.show();
+                loadingBar.setCanceledOnTouchOutside(true);
+                StoreComplainData();
             }
         }
     }
+
+    private void StoreComplainData() {
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(currentDate);
+
+        HashMap<String, Object> userMap = new HashMap<>();
+
+        userMap.put("ComplainBleedingGums", strchkbxBleedingGums);
+        userMap.put("ComplainInability", strchkbxInability);
+        userMap.put("ComplainDiscolored", strchkbxDiscolored);
+        userMap.put("ComplainTeeth", strchkbxTeeth);
+        userMap.put("ComplainCity", strchxbxSwelling);
+        userMap.put("ComplainGrowth", strchxbxGrowth);
+        userMap.put("ComplainPain", strchxbxPain);
+        userMap.put("Complainrightjaw", strchkbxrightjaw);
+        userMap.put("Complainleftjaw", strchkbxleftjaw);
+        userMap.put("Complainupperjaw", strchkbxupperjaw);
+        userMap.put("Complainlowerjaw", strchkbxlowerjaw);
+        userMap.put("Complaindays", stretdays);
+        userMap.put("ComplainSufferingTime", strSufferingTime);
+        userMap.put("ComplainPainType", strPainType);
+        userMap.put("ComplainPainIncrease", strPainIncrease);
+        userMap.put("ComplainotherPainIncrease", strtilotherPainIncrease);
+        userMap.put("ComplainPainDecrease", strPainDecrease);
+        userMap.put("ComplainotherPainDecrease", strtilotherPainDecrease);
+
+        UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    loadingBar.dismiss();
+                    androidx.appcompat.app.AlertDialog.Builder builder;
+
+//                    Toast.makeText(Info.this, "Done", Toast.LENGTH_SHORT).show();
+
+                    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+                        builder = new androidx.appcompat.app.AlertDialog.Builder(Complain.this, android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        builder = new androidx.appcompat.app.AlertDialog.Builder(Complain.this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
+                    }
+                    builder.setTitle("Confirmation")
+                            .setIcon(R.drawable.ic_info)
+                            .setMessage("Basic Complain Details Saved. \nPlease fill other forms")
+                            .setPositiveButton("Ok, Continue", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                    dialog.dismiss();
+                                    Intent LoginIntent = new Intent(Complain.this, History_one.class);
+                                    LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(LoginIntent);
+                                }
+                            })
+                            .show();
+                }
+                else{
+                    String mgs = task.getException().getMessage();
+                    loadingBar.dismiss();
+                    androidx.appcompat.app.AlertDialog.Builder builder;
+
+                    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+                        builder = new androidx.appcompat.app.AlertDialog.Builder(Complain.this, android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        builder = new androidx.appcompat.app.AlertDialog.Builder(Complain.this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
+                    }
+                    builder.setTitle("Error")
+                            .setIcon(R.drawable.ic_info)
+                            .setMessage("Unsuccessful. \n Please try again later.\n" + mgs)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                    dialog.dismiss();
+                                }
+                            })
+                            .show();
+                }
+            }
+        });
+
+    }
+
 }

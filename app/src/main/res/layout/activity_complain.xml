@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -127,7 +128,9 @@
                         android:gravity="start|top"
                         android:hint="Describe your problem here"
                         android:inputType="textMultiLine"
-                        android:maxLength="1000" />
+                        android:maxLength="1000"
+                        android:textColorHint="@color/bg_color"
+                        android:textColor="@color/bg_color" />
 
                     <TextView
                         android:id="@+id/txtviewComp2"
@@ -304,8 +307,8 @@
                             android:layout_height="match_parent"
                             android:hint="Days"
                             android:maxLength="2"
-                            android:textColor="#4146C8"
-                            android:textSize="18sp"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color"                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -471,8 +474,8 @@
                             android:layout_height="wrap_content"
                             android:hint="Pls mention the reason "
                             android:maxLength="50"
-                            android:textColor="#4146C8"
-                            android:textSize="18sp"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color"                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -535,8 +538,8 @@
                             android:id="@+id/tftilay_otherPainDecreaseValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="#4146C8"
-                            android:textSize="18sp"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color"                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:hint="Pls mention the reason " />
                     </com.google.android.material.textfield.TextInputLayout>

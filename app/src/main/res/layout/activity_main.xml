@@ -21,9 +21,13 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_margin="10dp"
-                app:srcCompat="@drawable/dental_doctor" />
+                android:layout_height="300dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/dental" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,7 +48,6 @@
                             android:id="@+id/signIn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="60dp"
                             android:padding="10dp"
                             android:text="@string/sign_in"
                             android:textColor="@color/white"
@@ -71,7 +74,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:layout_marginTop="60dp"
                             android:padding="10dp"
                             android:text="@string/sign_up"
                             android:textColor="#707070"
@@ -99,13 +101,14 @@
                             android:background="@drawable/bt_shape"
                             android:hint="E-Mail Id"
                             android:maxLength="50"
-                            android:textColorHint="#040404" />
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:passwordToggleEnabled="false">
+                        app:passwordToggleEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/tietPassword"
@@ -116,7 +119,8 @@
                             android:hint="Password"
                             android:maxLength="50"
                             android:onClick="onButtonClick"
-                            android:textColorHint="#000000" />
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -144,16 +148,16 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/google_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/bt_shape"
-                    android:text="@string/sign_in_with_google"
-                    android:textColor="@color/bg_color"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/google_button"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:background="@drawable/bt_shape"-->
+<!--                    android:text="@string/sign_in_with_google"-->
+<!--                    android:textColor="@color/bg_color"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
             </LinearLayout>
 
         </LinearLayout>

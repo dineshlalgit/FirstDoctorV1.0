@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -30,7 +31,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -434,10 +436,11 @@
                                 android:id="@+id/tftilay_otherchewValue"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
-                                android:hint="Pls mention the Condition " />
+                                android:hint="Pls mention the Condition "
+                                android:textColorHint="@color/bg_color"
+                                android:textColor="@color/bg_color" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
