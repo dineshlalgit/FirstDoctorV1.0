@@ -15,8 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -68,8 +68,7 @@
                     android:text="Examination"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#0000E4"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -97,41 +96,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/txtviewComp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="Patient Examination"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#4146C8"
                         android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:text="Patient Examination"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtviewComp1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="Please select the areas of the mouth you want the doctor to look at:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:text="Please select the areas of the mouth you want the doctor to look at:"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtviewComp2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:text="Please check whichever you feel your suffering from:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:text="Please check whichever you feel your suffering from:"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                        android:textStyle="bold" />
 
 
                     <LinearLayout
@@ -150,33 +149,33 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Lips"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Lips" />
+                                android:textStyle="bold" />
 
                             <CheckBox
                                 android:id="@+id/ckbxTongue"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Tongue"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Tongue" />
+                                android:textStyle="bold" />
 
                             <CheckBox
                                 android:id="@+id/chkbxMouthfloor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
                                 android:layout_weight="1"
                                 android:onClick="onCheckboxClicked"
-                                android:text="Floor of mouth" />
+                                android:text="Floor of mouth"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -189,34 +188,34 @@
                                 android:id="@+id/chkbxCheeks"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
                                 android:layout_weight="1"
                                 android:onClick="onCheckboxClicked"
-                                android:text="Cheeks" />
+                                android:text="Cheeks"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <CheckBox
                                 android:id="@+id/chkbxMouthroof"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Roof of the mouth"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Roof of the mouth" />
+                                android:textStyle="bold" />
 
                             <CheckBox
                                 android:id="@+id/chkbxGums"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
                                 android:layout_weight="1"
                                 android:onClick="onCheckboxClicked"
-                                android:text="Gums" />
+                                android:text="Gums"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -231,38 +230,49 @@
                         android:id="@+id/txtviewComp4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:layout_weight="1"
+                        android:text="Patient Photo"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#4146C8"
                         android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="20dp"
-                        android:text="Patient Photo"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtviewComp3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="Please take a picture of the problem areas of the mouth and upload the image. (Max of 5 images)"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:text="Please take a picture of the problem areas of the mouth and upload the image. (Max of 5 images)"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnUpload"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginRight="50dp"
-                        android:background="@drawable/nextbt_shape"
-                        android:text="Upload"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnUpload"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:text="Browse"
+                            android:background="@drawable/nextbt_shape"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/alert"
+                            android:textColor="@android:color/holo_red_light"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"/>
+                    </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnhistory"

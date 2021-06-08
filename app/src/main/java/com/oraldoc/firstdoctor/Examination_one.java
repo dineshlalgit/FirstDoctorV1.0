@@ -1,46 +1,117 @@
 package com.oraldoc.firstdoctor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.io.InputStream;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Examination_one extends AppCompatActivity {
     private FirebaseAuth mAuth;
+
+    private static final int IMAGE_CODE = 1;
     private ProgressDialog loadingBar;
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
     String currentUserID;
-    private String strLips,strTongue,strMouthfloor,strCheeks,strMouthroof,strGums,strChecked;
+    AppCompatButton upload_b;
+    private String strLips, strTongue, strMouthfloor, strCheeks, strMouthroof, strGums, strChecked;
+
+    TextView editText;
+    private static final int PICK_IMAGE = 1;
+    ArrayList<Uri> imageList = new ArrayList<>();
+    private Uri imageUri;
+    private int upload_count = 0;
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examination_one);
         loadingBar = new ProgressDialog(this);
-
+        upload_b = findViewById(R.id.btnUpload);
+        editText = findViewById(R.id.alert);
+        progressDialog = new ProgressDialog(Examination_one.this);
+        progressDialog.setMessage("Image Uploading Please Wait....");
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+
+        upload_b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                uploadtofirebase();
+                String bString = upload_b.getText().toString();
+                if (bString.equals("Browse")) {
+                    Dexter.withActivity(Examination_one.this)
+                            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                            .withListener(new PermissionListener() {
+                                @Override
+                                public void onPermissionGranted(PermissionGrantedResponse response) {
+                                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                                    intent.setType("image/*");
+                                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                                    startActivityForResult(Intent.createChooser(intent, "Please select Image"), PICK_IMAGE);
+                                }
+
+                                @Override
+                                public void onPermissionDenied(PermissionDeniedResponse response) {
+
+                                }
+
+                                @Override
+                                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                    token.continuePermissionRequest();
+                                }
+                            }).check();
+
+                    upload_b.setText("Upload");
+                } else {
+                    uploadtofirebase();
+                    upload_b.setText("Browse");
+                }
+
+            }
+        });
+
     }
 
     public String onCheckboxClicked(View view) {
@@ -49,7 +120,7 @@ public class Examination_one extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
 
         // Check which checkbox was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.chkbxLips:
                 if (checked)
                     strLips = "Lips";
@@ -99,14 +170,13 @@ public class Examination_one extends AppCompatActivity {
         return null;
     }
 
-    public void onNextButtonClick(View v){
-        strChecked = strLips+(strTongue)+(strMouthfloor)+(strCheeks)+(strMouthroof)+(strGums);
+    public void onNextButtonClick(View v) {
+        strChecked = strLips + (strTongue) + (strMouthfloor) + (strCheeks) + (strMouthroof) + (strGums);
 
-        if(v.getId ()==R.id.btnhistory){
-            if(strChecked.equals("nullnullnullnullnullnull")){
+        if (v.getId() == R.id.btnhistory) {
+            if (strChecked.equals("nullnullnullnullnullnull")) {
                 Toast.makeText(this, "Please select one place to view", Toast.LENGTH_LONG).show();
-            }
-            else{
+            } else {
                 loadingBar.setTitle("Saving Details");
                 loadingBar.setMessage("Please wait, While we are saving your details.");
                 loadingBar.show();
@@ -114,6 +184,63 @@ public class Examination_one extends AppCompatActivity {
                 StoreExaminationData();
             }
         }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+//            filepath = data.getData();
+//
+            if (data.getClipData() != null) {
+                int countClipData = data.getClipData().getItemCount();
+                int currentImageSelect = 0;
+                while (currentImageSelect < countClipData) {
+                    imageUri = data.getClipData().getItemAt(currentImageSelect).getUri();
+                    imageList.add(imageUri);
+                    currentImageSelect = currentImageSelect + 1;
+                }
+                editText.setVisibility(View.INVISIBLE);
+                editText.setText("You have selected" + imageList.size() + "Images");
+            } else {
+
+                Toast.makeText(this, "Please Select Multiple Image", Toast.LENGTH_SHORT).show();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void uploadtofirebase() {
+
+        progressDialog.show();
+        StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("ImageFolder");
+        for (upload_count = 0; upload_count < imageList.size(); upload_count++) {
+            Uri individualImg = imageList.get(upload_count);
+            StorageReference reference = imageFolder.child("Image" + individualImg.getLastPathSegment());
+            reference.putFile(individualImg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String url = String.valueOf(uri);
+                            storeLink(url);
+                        }
+                    });
+                }
+            });
+        }
+
+    }
+
+    private void storeLink(String url) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("OralImage");
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("imgLink", url);
+        databaseReference.push().setValue(hashMap);
+        progressDialog.dismiss();
+        editText.setText("Image Uploaded Successfully");
+
     }
 
     public void onBackPressed() {
@@ -165,7 +292,7 @@ public class Examination_one extends AppCompatActivity {
         UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
 //                    loadingBar.dismiss();
                     androidx.appcompat.app.AlertDialog.Builder builder;
 
@@ -194,8 +321,7 @@ public class Examination_one extends AppCompatActivity {
                                 }
                             })
                             .show();
-                }
-                else{
+                } else {
                     String mgs = task.getException().getMessage();
                     loadingBar.dismiss();
                     androidx.appcompat.app.AlertDialog.Builder builder;
