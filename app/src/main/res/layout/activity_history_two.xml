@@ -51,7 +51,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/tvLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -280,6 +280,15 @@
                             android:textStyle="bold"
                             android:onClick="onRadioButtonClicked"/>
 
+                        <RadioButton android:id="@+id/radio_tobaccoNA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not Applicable"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
                     </RadioGroup>
 
                     <TextView
@@ -340,7 +349,7 @@
                         <RadioButton android:id="@+id/radio_nosmoke"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
+                            android:text="Not Applicable"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -412,6 +421,16 @@
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_ChewType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not Applicable"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
 
                         <RadioButton android:id="@+id/radio_chewtypeother"
                             android:layout_width="wrap_content"
@@ -490,6 +509,16 @@
                             android:textStyle="bold"
                             android:onClick="onRadioButtonClicked"/>
 
+                        <RadioButton android:id="@+id/radio_noDuration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not Applicable"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+
 
                     </RadioGroup>
 
@@ -538,6 +567,16 @@
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton android:id="@+id/radio_noFrequency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not Applicable"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
 
 
                     </RadioGroup>

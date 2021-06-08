@@ -127,6 +127,13 @@ public class History_two extends AppCompatActivity {
                     strTobacco = null;
                 break;
 
+            case R.id.radio_tobaccoNA:
+                if (checked)
+                    strTobacco = "Not Applicable";
+                else
+                    strTobacco = null;
+                break;
+
             //Smoke
             case R.id.radio_cigarette:
                 if (checked)
@@ -158,7 +165,7 @@ public class History_two extends AppCompatActivity {
 
             case R.id.radio_nosmoke:
                 if (checked)
-                    strSmoke = "No";
+                    strSmoke = "Not Applicable";
                 else
                     strSmoke = null;
                 break;
@@ -214,10 +221,21 @@ public class History_two extends AppCompatActivity {
                     strChew = null;
                 break;
 
+            case R.id.radio_ChewType:
+                if (checked) {
+                    tilother.setVisibility(View.GONE);
+                    tftilay_otherchewValue.setText("");
+                    strChew = "Not Applicable";
+                }
+                else
+                    strChew = null;
+                break;
+
             case R.id.radio_chewtypeother:
                 if (checked) {
                     tftilay_otherchewValue.setText("");
                     tilother.setVisibility(View.VISIBLE);
+                    tilother.requestFocus();
                     strChew = "Other";
                 }
                 else
@@ -247,7 +265,15 @@ public class History_two extends AppCompatActivity {
                     strDuration = null;
                 break;
 
-                //Frequency
+            case R.id.radio_noDuration:
+                if (checked)
+                    strDuration = "Not Applicable";
+                else
+                    strDuration = null;
+                break;
+
+
+            //Alcohol
 
             case R.id.radio_alcoyes:
                 if (checked)
@@ -262,6 +288,9 @@ public class History_two extends AppCompatActivity {
                 else
                     strAlcohol = null;
 
+
+                //Frequency
+
             case R.id.radio_less1:
                 if (checked)
                     strFrequency = "Less than 1 packs";
@@ -269,7 +298,6 @@ public class History_two extends AppCompatActivity {
                     strFrequency = null;
                 break;
 
-                //Alcohol
             case R.id.radio_more1:
                 if (checked)
                     strFrequency = "1 to 3packs";
@@ -280,6 +308,13 @@ public class History_two extends AppCompatActivity {
             case R.id.radio_more3:
                 if (checked)
                     strFrequency = "More than 3 packs";
+                else
+                    strFrequency = null;
+                break;
+
+            case R.id.radio_noFrequency:
+                if (checked)
+                    strFrequency = "Not Applicable";
                 else
                     strFrequency = null;
                 break;

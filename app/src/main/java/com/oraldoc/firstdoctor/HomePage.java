@@ -21,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Objects;
+
 public class HomePage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
@@ -87,6 +89,8 @@ public class HomePage extends AppCompatActivity {
 
     }
     public void onNextButtonClick(View v){
+        mAuth = FirebaseAuth.getInstance();
+        currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         if(v.getId ()==R.id.btnfillform)
         {
             Intent nxt = new Intent(HomePage.this,Info.class);
@@ -95,6 +99,21 @@ public class HomePage extends AppCompatActivity {
         else if(v.getId ()==R.id.btnconult)
         {
             Toast.makeText(HomePage.this, "Button in progress", Toast.LENGTH_SHORT).show();
+        }
+        else if (v.getId ()==R.id.tvLogout){
+            mAuth.signOut();
+            Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+            Intent logout = new Intent(HomePage.this,MainActivity.class);
+            logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(logout);
+        }
+        else if (v.getId ()==R.id.tvProfile){
+            Intent logout = new Intent(HomePage.this,UserProfile.class);
+            startActivity(logout);
+        }
+        else if (v.getId ()==R.id.tvUserName){
+            Intent logout = new Intent(HomePage.this,UserProfile.class);
+            startActivity(logout);
         }
     }
 

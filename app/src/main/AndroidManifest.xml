@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Firstdoctor">
+        <activity android:name=".UserProfile"></activity>
         <activity android:name=".Examination_one" />
         <activity android:name=".History_two" />
         <activity android:name=".History_one" />

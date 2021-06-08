@@ -35,7 +35,7 @@ public class History_one extends AppCompatActivity {
     private StorageReference UserProfileImageRef;
     String currentUserID;
 
-    private String strHyper,strMedication,strBleeding,strCardiac,strGastric,strSurgery,strAllergy,strAsthma,strJaundice,strDiabetic,strEpilepsy,strOtherCondition,strOtherConditionValue;
+    private String strHyper,strMedication,strBleeding,strCardiac,strGastric,strSurgery,strAllergy,strAsthma,strJaundice,strDiabetic,strEpilepsy,strConditionNA,strOtherCondition,strOtherConditionValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,12 +140,21 @@ public class History_one extends AppCompatActivity {
                 strEpilepsy = null;
 
                 return strEpilepsy;
+
+            case R.id.chkbxConditionNA:
+                if (checked)
+                    strConditionNA = "Not Applicable";
+                else
+                strConditionNA = null;
+
+                return strConditionNA;
         }
         return null;
     }
 
     public void onRadioButtonClicked(View view) {
         TextInputLayout tilother = (TextInputLayout)findViewById(R.id.tftilay_othercondition);
+        TextInputEditText tilotherText = (TextInputEditText)findViewById(R.id.tiet_otherconditionValue);
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -156,6 +165,7 @@ public class History_one extends AppCompatActivity {
                 if (checked) {
                     tilother.setVisibility(View.GONE);
                     strOtherCondition = "No";
+                    tilotherText.setText(null);
                 }
                 else
                     strOtherCondition = null;
@@ -216,7 +226,7 @@ public class History_one extends AppCompatActivity {
 
             strCondition = strHyper+(strMedication)+(strBleeding)+(strCardiac)+(strGastric)+(strSurgery)+(strAllergy)+(strAsthma)+(strJaundice)+(strDiabetic)+(strEpilepsy);
 
-             if (strCondition.equals("nullnullnullnullnullnullnullnullnullnullnull")) {
+             if (strCondition.equals("nullnullnullnullnullnullnullnullnullnullnullnull")) {
                 Toast.makeText(this, "Please select at least one condition that you are suffering from", Toast.LENGTH_LONG).show();
             }
             else if (strOtherCondition == null){

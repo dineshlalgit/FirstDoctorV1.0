@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
 //        google_bt.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "Google sign button in progress", Toast.LENGTH_SHORT).show();
-////                Intent SignInGoogleB = new Intent(MainActivity.this, Examination_one.class);
-////                startActivity(SignInGoogleB);
+////                Toast.makeText(MainActivity.this, "Google sign button in progress", Toast.LENGTH_SHORT).show();
+//                Intent SignInGoogleB = new Intent(MainActivity.this, Complain.class);
+//                startActivity(SignInGoogleB);
 //            }
 //        });
 //        signIn_bt.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         signUp_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent SignUp = new Intent(MainActivity.this, SignUp.class);
+                Intent SignUp = new Intent(MainActivity.this, History_two.class);
                 startActivity(SignUp);
             }
         });
