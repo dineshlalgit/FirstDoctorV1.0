@@ -47,7 +47,7 @@ import java.util.Objects;
 public class Examination_one extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
-    private static final int IMAGE_CODE = 1;
+
     private ProgressDialog loadingBar;
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
