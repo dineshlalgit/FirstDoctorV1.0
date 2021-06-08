@@ -99,7 +99,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bt_shape"
-                            android:hint="E-Mail Id"
+                            android:drawableStart="@drawable/email24"
+                            android:hint=" E-Mail Id"
                             android:maxLength="50"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
@@ -116,7 +117,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/bt_shape"
-                            android:hint="Password"
+                            android:drawableStart="@drawable/password_24"
+                            android:hint=" Password"
                             android:maxLength="50"
                             android:onClick="onButtonClick"
                             android:textColor="@color/bg_color"
@@ -125,6 +127,18 @@
 
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:foregroundGravity="right"
+                    android:gravity="right"
+                    android:text="Forgot Password?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <CheckBox
                     android:layout_width="wrap_content"

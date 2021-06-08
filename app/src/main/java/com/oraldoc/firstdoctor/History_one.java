@@ -1,44 +1,29 @@
 package com.oraldoc.firstdoctor;
 
-import android.Manifest;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Objects;
@@ -48,64 +33,16 @@ public class History_one extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
-    private static final int PICK_IMAGE = 1;
     String currentUserID;
-    AppCompatButton upload;
-    ProgressDialog progressDialog;
-    TextView fileTitle;
 
-    ArrayList<Uri> imageList = new ArrayList<>();
-    private Uri imageUri;
-    private int upload_count = 0;
-
-
-    private String strHyper, strMedication, strBleeding, strCardiac, strGastric, strSurgery, strAllergy, strAsthma, strJaundice, strDiabetic, strEpilepsy, strOtherCondition, strOtherConditionValue;
+    private String strHyper,strMedication,strBleeding,strCardiac,strGastric,strSurgery,strAllergy,strAsthma,strJaundice,strDiabetic,strEpilepsy,strConditionNA,strOtherCondition,strOtherConditionValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_one);
         loadingBar = new ProgressDialog(this);
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Image Uploading Please Wait....");
-        upload = findViewById(R.id.btnUpload);
-        fileTitle = findViewById(R.id.fileTitle);
-        UserProfileImageRef = FirebaseStorage.getInstance().getReference();
-        UsersRef = FirebaseDatabase.getInstance().getReference("mydocuments");
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bString = upload.getText().toString();
-                if (bString.equals("Browse")) {
-                    Dexter.withActivity(History_one.this)
-                            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            .withListener(new PermissionListener() {
-                                @Override
-                                public void onPermissionGranted(PermissionGrantedResponse response) {
-                                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                                    intent.setType("image/*");
-                                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                                    startActivityForResult(Intent.createChooser(intent, "Please select Image"), PICK_IMAGE);
-                                }
 
-                                @Override
-                                public void onPermissionDenied(PermissionDeniedResponse response) {
-
-                                }
-
-                                @Override
-                                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-                                    token.continuePermissionRequest();
-                                }
-                            }).check();
-                    upload.setText("Upload");
-                } else {
-                    uploadtofirebase();
-                    upload.setText("Browse");
-
-                }
-            }
-        });
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
@@ -117,7 +54,7 @@ public class History_one extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
 
         // Check which checkbox was clicked
-        switch (view.getId()) {
+        switch(view.getId()) {
             case R.id.chkbxHyper:
                 if (checked)
                     strHyper = "Hyper Tension";
@@ -178,7 +115,7 @@ public class History_one extends AppCompatActivity {
                 else
                     strAsthma = null;
 
-                return strAsthma;
+                return strAsthma ;
 
             case R.id.chkbxJaundice:
                 if (checked)
@@ -200,27 +137,37 @@ public class History_one extends AppCompatActivity {
                 if (checked)
                     strEpilepsy = "Epilepsy";
                 else
-                    strEpilepsy = null;
+                strEpilepsy = null;
 
                 return strEpilepsy;
+
+            case R.id.chkbxConditionNA:
+                if (checked)
+                    strConditionNA = "Not Applicable";
+                else
+                strConditionNA = null;
+
+                return strConditionNA;
         }
         return null;
     }
 
-
     public void onRadioButtonClicked(View view) {
-        TextInputLayout tilother = (TextInputLayout) findViewById(R.id.tftilay_othercondition);
+        TextInputLayout tilother = (TextInputLayout)findViewById(R.id.tftilay_othercondition);
+        TextInputEditText tilotherText = (TextInputEditText)findViewById(R.id.tiet_otherconditionValue);
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch (view.getId()) {
+        switch(view.getId()) {
 
             case R.id.radio_no:
                 if (checked) {
                     tilother.setVisibility(View.GONE);
                     strOtherCondition = "No";
-                } else
+                    tilotherText.setText(null);
+                }
+                else
                     strOtherCondition = null;
 
                 break;
@@ -229,7 +176,8 @@ public class History_one extends AppCompatActivity {
                     strOtherCondition = "Yes";
                     tilother.setVisibility(View.VISIBLE);
                     tilother.requestFocus();
-                } else
+                }
+                else
                     strOtherCondition = null;
                 break;
         }
@@ -264,8 +212,7 @@ public class History_one extends AppCompatActivity {
 
     }
 
-
-    public void onNextButtonClick(View v) {
+    public void onNextButtonClick(View v){
 
         TextInputEditText tiet_otherconditionValue;
         tiet_otherconditionValue = (TextInputEditText) findViewById(R.id.tiet_otherconditionValue);
@@ -273,84 +220,30 @@ public class History_one extends AppCompatActivity {
         strOtherConditionValue = String.valueOf(tiet_otherconditionValue.getText());
 
 
-        if (v.getId() == R.id.btnhistory) {
+        if(v.getId ()==R.id.btnhistory){
 
             String strCondition;
 
-            strCondition = strHyper + (strMedication) + (strBleeding) + (strCardiac) + (strGastric) + (strSurgery) + (strAllergy) + (strAsthma) + (strJaundice) + (strDiabetic) + (strEpilepsy);
+            strCondition = strHyper+(strMedication)+(strBleeding)+(strCardiac)+(strGastric)+(strSurgery)+(strAllergy)+(strAsthma)+(strJaundice)+(strDiabetic)+(strEpilepsy);
 
-            if (strCondition.equals("nullnullnullnullnullnullnullnullnullnullnull")) {
+             if (strCondition.equals("nullnullnullnullnullnullnullnullnullnullnullnull")) {
                 Toast.makeText(this, "Please select at least one condition that you are suffering from", Toast.LENGTH_LONG).show();
-            } else if (strOtherCondition == null) {
+            }
+            else if (strOtherCondition == null){
                 Toast.makeText(this, "Please select Yes/No from any other conditions", Toast.LENGTH_SHORT).show();
-            } else if (strOtherCondition.equals("Yes") && (strOtherConditionValue.isEmpty())) {
-                tiet_otherconditionValue.setError("Please enter pain increase reason");
-                tiet_otherconditionValue.requestFocus();
-            } else {
-                loadingBar.setTitle("Saving Details");
-                loadingBar.setMessage("Please wait, While we are saving your details.");
-                loadingBar.show();
-                loadingBar.setCanceledOnTouchOutside(true);
-                StoreHistroy1Data();
+            }
+            else if (strOtherCondition.equals("Yes") && (strOtherConditionValue.isEmpty())){
+                 tiet_otherconditionValue.setError("Please enter pain increase reason");
+                 tiet_otherconditionValue.requestFocus();
+            }
+            else{
+                 loadingBar.setTitle("Saving Details");
+                 loadingBar.setMessage("Please wait, While we are saving your details.");
+                 loadingBar.show();
+                 loadingBar.setCanceledOnTouchOutside(true);
+                 StoreHistroy1Data();
             }
         }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-//            filepath = data.getData();
-//
-            if (data.getClipData() != null) {
-                int countClipData = data.getClipData().getItemCount();
-                int currentImageSelect = 0;
-                while (currentImageSelect < countClipData) {
-                    imageUri = data.getClipData().getItemAt(currentImageSelect).getUri();
-                    imageList.add(imageUri);
-                    currentImageSelect = currentImageSelect + 1;
-                }
-                fileTitle.setVisibility(View.INVISIBLE);
-                fileTitle.setText("You have selected" + imageList.size() + "Images");
-            } else {
-
-                Toast.makeText(this, "Please Select Multiple Image", Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void uploadtofirebase() {
-
-        progressDialog.show();
-        StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("DocumentsFolder");
-        for (upload_count = 0; upload_count < imageList.size(); upload_count++) {
-            Uri individualImg = imageList.get(upload_count);
-            StorageReference reference = imageFolder.child("Image" + individualImg.getLastPathSegment());
-            reference.putFile(individualImg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            String url = String.valueOf(uri);
-                            storeLink(url);
-                        }
-                    });
-                }
-            });
-        }
-
-    }
-
-    private void storeLink(String url) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("DocumentsImage");
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("imgLink", url);
-        databaseReference.push().setValue(hashMap);
-        progressDialog.dismiss();
-        fileTitle.setVisibility(View.VISIBLE);
-        fileTitle.setText("Image Uploaded Successfully");
-
     }
 
     private void StoreHistroy1Data() {
@@ -379,7 +272,7 @@ public class History_one extends AppCompatActivity {
         UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful()){
                     loadingBar.dismiss();
                     androidx.appcompat.app.AlertDialog.Builder builder;
 
@@ -403,7 +296,8 @@ public class History_one extends AppCompatActivity {
                                 }
                             })
                             .show();
-                } else {
+                }
+                else{
                     String mgs = task.getException().getMessage();
                     loadingBar.dismiss();
                     androidx.appcompat.app.AlertDialog.Builder builder;

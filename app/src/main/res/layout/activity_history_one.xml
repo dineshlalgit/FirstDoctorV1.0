@@ -15,8 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -41,10 +41,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Info"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvLogout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -95,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/txtviewComp"
@@ -103,37 +104,37 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Patient Medical History"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#4146C8"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                    <TextView
-                        android:id="@+id/txtviewComp1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Please select relevant checlbox if the patient has any of the conditions listed "
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textColor="#4146C8"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/txtviewComp1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textColor="#4146C8"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:text="Please select relevant checlbox if the patient has any of the conditions listed "-->
+<!--                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />-->
 
                     <TextView
                         android:id="@+id/txtviewComp2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:text="Do you have any of the following conditions? "
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4146C8"
+                        android:layout_marginTop="10dp"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:text="Do you have any of the following conditions? "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -148,22 +149,22 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Hyper Tension"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Hyper Tension" />
 
                             <CheckBox
                                 android:id="@+id/chkbxerMedication"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Under Medication"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Under Medication" />
 
 
                             <CheckBox
@@ -171,84 +172,77 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Bleeding/Blood Disorder"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Bleeding/Blood Disorder" />
 
                             <CheckBox
                                 android:id="@+id/chkbxCardiac"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Cardiac Problems"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Cardiac Problems" />
 
                             <CheckBox
                                 android:id="@+id/chkbxGastric"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Gastric problems"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Gastric problems" />
 
                             <CheckBox
                                 android:id="@+id/chkbxSurgery"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
                                 android:text="Underwent Recent Surgery"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
+                                android:onClick="onCheckboxClicked"
                                 android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
 
                             <CheckBox
                                 android:id="@+id/chkbxAllergy"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Allergy"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Allergy" />
 
                             <CheckBox
                                 android:id="@+id/ckbxAsthma"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Asthma "
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Asthma " />
 
                             <CheckBox
                                 android:id="@+id/chkbxJaundice"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Jaundice"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Jaundice" />
 
 
                             <CheckBox
@@ -256,36 +250,49 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Diabetic"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Diabetic" />
 
                             <CheckBox
                                 android:id="@+id/chkbxEpilepsy"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Epilepsy"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Epilepsy" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxConditionNA"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Not Applicable" />
 
                         </LinearLayout>
+
+
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvradiobutn6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Do you have any other condition apart from the above mentioned?"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:text="Do you have any other condition apart from the above mentioned?"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                     <RadioGroup
                         android:layout_width="match_parent"
@@ -293,94 +300,80 @@
                         android:onClick="onRadioButtonClicked"
                         android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/radio_no"
+                        <RadioButton android:id="@+id/radio_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
                             android:text="No"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
 
-                        <RadioButton
-                            android:id="@+id/radio_yes"
+                        <RadioButton android:id="@+id/radio_yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
                             android:text="Yes"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
 
                     </RadioGroup>
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tftilay_othercondition"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textColor="@color/bg_color"
+                        android:visibility="gone"
                         android:textColorHint="@color/bg_color"
-                        android:textSize="18sp"
+                        android:textColor="@color/bg_color"                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:visibility="gone">
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/tiet_otherconditionValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Pls mention the Condition "
                             android:textColor="#4146C8"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:hint="Pls mention the Condition " />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
                         android:id="@+id/tvradiobutn7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Do you want to share any other condition (upload your report in PDF format) ?"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4146C8"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:text="Do you want to share any other condition (upload your report in PDF format) ?"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnUpload"
+                        android:onClick="onNextButtonClick"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btnUpload"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginRight="50dp"
-                            android:background="@drawable/nextbt_shape"
-                            android:onClick="onNextButtonClick"
-                            android:text="Browse"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-                   <TextView
-                       android:id="@+id/fileTitle"
-                       android:textColor="@android:color/holo_red_light"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                        android:layout_margin="10dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/nextbt_shape"
+                        android:text="Upload"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnhistory"
+                        android:onClick="onNextButtonClick"
+                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_margin="15dp"
-                        android:layout_marginTop="20dp"
                         android:background="@drawable/nextbt_shape"
-                        android:onClick="onNextButtonClick"
                         android:text="Next"
                         android:textColor="@color/white"
                         android:textSize="20sp"

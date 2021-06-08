@@ -44,7 +44,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvLogout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -292,30 +292,19 @@
                         android:text="Having symtoms/problems from the past_______ ."
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="#4146C8"
-                        android:textStyle="bold"
-                        android:layout_weight="1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tftilay_sufferingdays"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Days"
-                            android:maxLength="2"
-                            android:textColorHint="@color/bg_color"
-                            android:textColor="@color/bg_color"                             android:textSize="18sp"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
+                        <RadioButton android:id="@+id/radio_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Days"
+                            android:onClick="onRadioButtonClicked"/>
 
                         <RadioButton android:id="@+id/radio_week"
                             android:layout_width="wrap_content"
@@ -345,6 +334,28 @@
                             android:onClick="onRadioButtonClicked"/>
 
                     </RadioGroup>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tftilayout_sufferingdays"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="#4146C8"
+                        android:visibility="gone"
+                        android:textStyle="bold"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tftilay_sufferingdays"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Days"
+                            android:maxLength="2"
+                            android:textColorHint="@color/bg_color"
+                            android:textColor="@color/bg_color"                             android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <TextView
                         android:id="@+id/tvradiobutn3"
                         android:layout_width="wrap_content"
@@ -355,6 +366,7 @@
                         android:textStyle="bold"
                         android:text="Pain which im suffering from is_______ ."
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -396,6 +408,24 @@
                             android:textStyle="bold"
                             android:onClick="onRadioButtonClicked"/>
 
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvradiobutn20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#4146C8"
+                        android:layout_marginTop="20dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Pain type"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
                         <RadioButton android:id="@+id/radio_continuous"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -426,40 +456,50 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:onClick="onRadioButtonClicked">
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:onClick="onRadioButtonClicked">
 
-                        <RadioButton android:id="@+id/radio_hotfood"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Hot Foods"
-                            android:textColor="#4146C8"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:onClick="onRadioButtonClicked"/>
+                                <RadioButton android:id="@+id/radio_hotfood"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Hot Foods"
+                                    android:textColor="#4146C8"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:onClick="onRadioButtonClicked"/>
 
-                        <RadioButton android:id="@+id/radio_coldfood"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Cold Foods"
-                            android:textColor="#4146C8"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:onClick="onRadioButtonClicked"/>
+                                <RadioButton android:id="@+id/radio_coldfood"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Cold Foods"
+                                    android:textColor="#4146C8"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:onClick="onRadioButtonClicked"/>
 
-                        <RadioButton android:id="@+id/radio_other"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Other"
-                            android:textColor="#4146C8"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:onClick="onRadioButtonClicked"/>
+                                <RadioButton android:id="@+id/radio_NA"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Not Applicable"
+                                    android:textColor="#4146C8"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:onClick="onRadioButtonClicked"/>
 
-                    </RadioGroup>
+                                <RadioButton
+                                    android:id="@+id/radio_other"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Other"
+                                    android:textColor="#4146C8"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:onClick="onRadioButtonClicked"/>
+
+                            </RadioGroup>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tftilay_otherPainIncrease"
                         android:layout_width="match_parent"
@@ -492,7 +532,7 @@
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:onClick="onRadioButtonClicked">
 
                         <RadioButton android:id="@+id/radio_hotfooddec"
@@ -508,6 +548,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Cold Foods"
+                            android:textColor="#4146C8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:onClick="onRadioButtonClicked"/>
+
+                        <RadioButton
+                            android:id="@+id/radio_otherNAdec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Not Applicable"
                             android:textColor="#4146C8"
                             android:textSize="18sp"
                             android:textStyle="bold"
