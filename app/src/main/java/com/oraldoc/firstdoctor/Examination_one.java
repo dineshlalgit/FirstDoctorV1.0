@@ -54,13 +54,13 @@ public class Examination_one extends AppCompatActivity {
     String currentUserID;
     AppCompatButton upload_b;
     private String strLips, strTongue, strMouthfloor, strCheeks, strMouthroof, strGums, strChecked;
-
+    ProgressDialog progressDialog;
     TextView editText;
     private static final int PICK_IMAGE = 1;
     ArrayList<Uri> imageList = new ArrayList<>();
     private Uri imageUri;
     private int upload_count = 0;
-    ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,6 +239,7 @@ public class Examination_one extends AppCompatActivity {
         hashMap.put("imgLink", url);
         databaseReference.push().setValue(hashMap);
         progressDialog.dismiss();
+        editText.setVisibility(View.VISIBLE);
         editText.setText("Image Uploaded Successfully");
 
     }

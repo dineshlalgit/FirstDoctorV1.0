@@ -28,7 +28,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
@@ -37,9 +36,9 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.oraldoc.firstdoctor.pdf.fileinfomodel;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Objects;
@@ -49,10 +48,17 @@ public class History_one extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
+    private static final int PICK_IMAGE = 1;
     String currentUserID;
     AppCompatButton upload;
+    ProgressDialog progressDialog;
     TextView fileTitle;
-    Uri filepath;
+
+    ArrayList<Uri> imageList = new ArrayList<>();
+    private Uri imageUri;
+    private int upload_count = 0;
+
+
     private String strHyper, strMedication, strBleeding, strCardiac, strGastric, strSurgery, strAllergy, strAsthma, strJaundice, strDiabetic, strEpilepsy, strOtherCondition, strOtherConditionValue;
 
     @Override
@@ -60,6 +66,8 @@ public class History_one extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_one);
         loadingBar = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Image Uploading Please Wait....");
         upload = findViewById(R.id.btnUpload);
         fileTitle = findViewById(R.id.fileTitle);
         UserProfileImageRef = FirebaseStorage.getInstance().getReference();
@@ -69,32 +77,30 @@ public class History_one extends AppCompatActivity {
             public void onClick(View v) {
                 String bString = upload.getText().toString();
                 if (bString.equals("Browse")) {
-                    Dexter.withContext(getApplicationContext())
+                    Dexter.withActivity(History_one.this)
                             .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                             .withListener(new PermissionListener() {
                                 @Override
-                                public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                                    Intent intent = new Intent();
-                                    intent.setType("application/pdf");
-                                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                                    startActivityForResult(Intent.createChooser(intent, "Select Pdf Files"), 101);
+                                public void onPermissionGranted(PermissionGrantedResponse response) {
+                                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                                    intent.setType("image/*");
+                                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                                    startActivityForResult(Intent.createChooser(intent, "Please select Image"), PICK_IMAGE);
                                 }
 
                                 @Override
-                                public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                                public void onPermissionDenied(PermissionDeniedResponse response) {
 
                                 }
 
                                 @Override
-                                public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
+                                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                    token.continuePermissionRequest();
                                 }
-
-
                             }).check();
                     upload.setText("Upload");
                 } else {
-                    processupload(filepath);
+                    uploadtofirebase();
                     upload.setText("Browse");
 
                 }
@@ -201,15 +207,6 @@ public class History_one extends AppCompatActivity {
         return null;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 101 && resultCode == RESULT_OK) {
-            filepath = data.getData();
-
-        }
-    }
 
     public void onRadioButtonClicked(View view) {
         TextInputLayout tilother = (TextInputLayout) findViewById(R.id.tftilay_othercondition);
@@ -267,41 +264,6 @@ public class History_one extends AppCompatActivity {
 
     }
 
-    public void processupload(Uri filepath) {
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setTitle("File Uploading....!!!");
-        pd.show();
-
-        final StorageReference reference = UserProfileImageRef.child("uploadPDF/" + System.currentTimeMillis() + ".pdf");
-        reference.putFile(filepath)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-
-                                fileinfomodel obj = new fileinfomodel(fileTitle.getText().toString(), uri.toString());
-                                UsersRef.child(UsersRef.push().getKey()).setValue(obj);
-
-                                pd.dismiss();
-                                Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_LONG).show();
-
-
-                            }
-                        });
-
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        float percent = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                        pd.setMessage("Uploaded :" + (int) percent + "%");
-                    }
-                });
-    }
 
     public void onNextButtonClick(View v) {
 
@@ -332,6 +294,63 @@ public class History_one extends AppCompatActivity {
                 StoreHistroy1Data();
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+//            filepath = data.getData();
+//
+            if (data.getClipData() != null) {
+                int countClipData = data.getClipData().getItemCount();
+                int currentImageSelect = 0;
+                while (currentImageSelect < countClipData) {
+                    imageUri = data.getClipData().getItemAt(currentImageSelect).getUri();
+                    imageList.add(imageUri);
+                    currentImageSelect = currentImageSelect + 1;
+                }
+                fileTitle.setVisibility(View.INVISIBLE);
+                fileTitle.setText("You have selected" + imageList.size() + "Images");
+            } else {
+
+                Toast.makeText(this, "Please Select Multiple Image", Toast.LENGTH_SHORT).show();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void uploadtofirebase() {
+
+        progressDialog.show();
+        StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("DocumentsFolder");
+        for (upload_count = 0; upload_count < imageList.size(); upload_count++) {
+            Uri individualImg = imageList.get(upload_count);
+            StorageReference reference = imageFolder.child("Image" + individualImg.getLastPathSegment());
+            reference.putFile(individualImg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String url = String.valueOf(uri);
+                            storeLink(url);
+                        }
+                    });
+                }
+            });
+        }
+
+    }
+
+    private void storeLink(String url) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("DocumentsImage");
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("imgLink", url);
+        databaseReference.push().setValue(hashMap);
+        progressDialog.dismiss();
+        fileTitle.setVisibility(View.VISIBLE);
+        fileTitle.setText("Image Uploaded Successfully");
+
     }
 
     private void StoreHistroy1Data() {
