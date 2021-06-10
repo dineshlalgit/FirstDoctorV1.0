@@ -95,7 +95,7 @@ public class HomePage extends AppCompatActivity {
             Intent nxt = new Intent(HomePage.this, Info.class);
             startActivity(nxt);
         } else if (v.getId() == R.id.btnconult) {
-            Toast.makeText(HomePage.this, "Button in progress", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomePage.this, "Coming Soon..... \n With many other Features", Toast.LENGTH_SHORT).show();
         }
     }
 

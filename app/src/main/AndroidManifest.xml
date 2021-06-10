@@ -20,7 +20,9 @@
         <activity android:name=".Info" />
         <activity android:name=".HomePage" />
         <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
