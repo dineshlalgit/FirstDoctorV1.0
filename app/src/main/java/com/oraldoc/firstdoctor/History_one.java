@@ -59,7 +59,7 @@ public class History_one extends AppCompatActivity {
     private int upload_count = 0;
 
 
-    private String strHyper, strMedication, strBleeding, strCardiac, strGastric, strSurgery, strAllergy, strAsthma, strJaundice, strDiabetic, strEpilepsy, strOtherCondition, strOtherConditionValue;
+    private String strHyper, strMedication, strBleeding, strCardiac, strGastric, strSurgery, strAllergy, strAsthma, strJaundice, strDiabetic, strEpilepsy, strOtherCondition, strOtherConditionValue, strConditionNA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,6 +196,14 @@ public class History_one extends AppCompatActivity {
 
                 return strDiabetic;
 
+            case R.id.chkbxConditionNA:
+                if (checked)
+                    strConditionNA = "Not Applicable";
+                else
+                    strConditionNA = null;
+
+                return strConditionNA;
+
             case R.id.chkbxEpilepsy:
                 if (checked)
                     strEpilepsy = "Epilepsy";
@@ -279,7 +287,7 @@ public class History_one extends AppCompatActivity {
 
             strCondition = strHyper + (strMedication) + (strBleeding) + (strCardiac) + (strGastric) + (strSurgery) + (strAllergy) + (strAsthma) + (strJaundice) + (strDiabetic) + (strEpilepsy);
 
-            if (strCondition.equals("nullnullnullnullnullnullnullnullnullnullnull")) {
+            if (strCondition.equals("nullnullnullnullnullnullnullnullnullnullnullnull")) {
                 Toast.makeText(this, "Please select at least one condition that you are suffering from", Toast.LENGTH_LONG).show();
             } else if (strOtherCondition == null) {
                 Toast.makeText(this, "Please select Yes/No from any other conditions", Toast.LENGTH_SHORT).show();
@@ -374,6 +382,7 @@ public class History_one extends AppCompatActivity {
         userMap.put("ComplainJaundice", strJaundice);
         userMap.put("ComplainDiabetic", strDiabetic);
         userMap.put("ComplainEpilepsy", strEpilepsy);
+        userMap.put("ComplainNotApplicable", strConditionNA);
         userMap.put("ComplainPainIncreaseReason", strOtherConditionValue);
 
         UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {

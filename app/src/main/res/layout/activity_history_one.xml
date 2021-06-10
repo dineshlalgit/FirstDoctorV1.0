@@ -144,6 +144,62 @@
                             android:orientation="vertical">
 
                             <CheckBox
+                                android:id="@+id/chkbxAllergy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Allergy"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <CheckBox
+                                android:id="@+id/ckbxAsthma"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Asthma "
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxJaundice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Jaundice"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+
+                            <CheckBox
+                                android:id="@+id/chkbxDiabetic"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Diabetic"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <CheckBox
+                                android:id="@+id/chkbxEpilepsy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onClick="onCheckboxClicked"
+                                android:text="Epilepsy"
+                                android:textColor="#4146C8"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <CheckBox
                                 android:id="@+id/chkbxHyper"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -210,70 +266,20 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
                             <CheckBox
-                                android:id="@+id/chkbxAllergy"
+                                android:id="@+id/chkbxConditionNA"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:onClick="onCheckboxClicked"
-                                android:text="Allergy"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <CheckBox
-                                android:id="@+id/ckbxAsthma"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Asthma "
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <CheckBox
-                                android:id="@+id/chkbxJaundice"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Jaundice"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-
-                            <CheckBox
-                                android:id="@+id/chkbxDiabetic"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Diabetic"
-                                android:textColor="#4146C8"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <CheckBox
-                                android:id="@+id/chkbxEpilepsy"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:onClick="onCheckboxClicked"
-                                android:text="Epilepsy"
+                                android:text="Underwent Recent Surgery"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
+
+
                     </LinearLayout>
 
                     <TextView
