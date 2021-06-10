@@ -116,7 +116,7 @@ public class SignUp extends AppCompatActivity {
                 loadingBar.setTitle("Creating New Account");
                 loadingBar.setMessage("Please wait, While we are creating your new account.");
                 loadingBar.show();
-                loadingBar.setCanceledOnTouchOutside(true);
+                loadingBar.setCanceledOnTouchOutside(false);
 
 
                 mAuth.createUserWithEmailAndPassword(stringEmail,stringPassword)

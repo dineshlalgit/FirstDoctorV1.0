@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -28,11 +29,18 @@ public class HomePage extends AppCompatActivity {
     private DatabaseReference UsersRef;
     private String currentUserID,strtvUserName;
     private TextView tvUserName;
+    private ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        loadingBar = new ProgressDialog(this);
+
+        loadingBar.setTitle("Getting Info");
+        loadingBar.setMessage("Please wait, While we are fetching your details.");
+        loadingBar.show();
+        loadingBar.setCanceledOnTouchOutside(false);
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
@@ -48,6 +56,8 @@ public class HomePage extends AppCompatActivity {
                     strtvUserName = snapshot.child("userName").getValue().toString();
 //
                     tvUserName.setText("Hi! "+strtvUserName);
+                    loadingBar.dismiss();
+
                 }
                 else{
                     Toast.makeText(HomePage.this, "Error", Toast.LENGTH_SHORT).show();
