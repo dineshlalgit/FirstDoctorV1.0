@@ -1,10 +1,6 @@
 package com.oraldoc.firstdoctor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -13,55 +9,48 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.Objects;
 
 public class HomePage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
-    private String currentUserID,strtvUserName;
+    private String currentUserID, strtvUserName;
     private TextView tvUserName;
-    private ProgressDialog loadingBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        loadingBar = new ProgressDialog(this);
-
-        loadingBar.setTitle("Getting Info");
-        loadingBar.setMessage("Please wait, While we are fetching your details.");
-        loadingBar.show();
-        loadingBar.setCanceledOnTouchOutside(false);
 
         mAuth = FirebaseAuth.getInstance();
+//
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
-        tvUserName = (TextView)findViewById(R.id.tvUserName);
+        tvUserName = (TextView) findViewById(R.id.tvUserName);
 
         UsersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
 
                     //Personal Details
                     strtvUserName = snapshot.child("userName").getValue().toString();
 //
-                    tvUserName.setText("Hi! "+strtvUserName);
-                    loadingBar.dismiss();
+                    tvUserName.setText("Hi! " + strtvUserName);
+                } else {
 
-                }
-                else{
                     Toast.makeText(HomePage.this, "Error", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
@@ -71,6 +60,8 @@ public class HomePage extends AppCompatActivity {
         });
 
     }
+
+
     //For Back press and confirmation for exit
     @Override
     public void onBackPressed() {
@@ -98,32 +89,13 @@ public class HomePage extends AppCompatActivity {
                 .show();
 
     }
-    public void onNextButtonClick(View v){
-        mAuth = FirebaseAuth.getInstance();
-        currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        if(v.getId ()==R.id.btnfillform)
-        {
-            Intent nxt = new Intent(HomePage.this,Info.class);
+
+    public void onNextButtonClick(View v) {
+        if (v.getId() == R.id.btnfillform) {
+            Intent nxt = new Intent(HomePage.this, Info.class);
             startActivity(nxt);
-        }
-        else if(v.getId ()==R.id.btnconult)
-        {
+        } else if (v.getId() == R.id.btnconult) {
             Toast.makeText(HomePage.this, "Button in progress", Toast.LENGTH_SHORT).show();
-        }
-        else if (v.getId ()==R.id.tvLogout){
-            mAuth.signOut();
-            Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show();
-            Intent logout = new Intent(HomePage.this,MainActivity.class);
-            logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(logout);
-        }
-        else if (v.getId ()==R.id.tvProfile){
-            Intent logout = new Intent(HomePage.this,UserProfile.class);
-            startActivity(logout);
-        }
-        else if (v.getId ()==R.id.tvUserName){
-            Intent logout = new Intent(HomePage.this,UserProfile.class);
-            startActivity(logout);
         }
     }
 
