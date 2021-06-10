@@ -28,21 +28,20 @@
 
                 <TextView
                     android:id="@+id/tvUserName"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginEnd="50dp"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="2"
                     android:background="@android:color/transparent"
-                    android:drawableStart="@drawable/account_30"
-                    android:drawableLeft="@drawable/account_30"
                     android:onClick="onNextButtonClick"
                     android:text="Hi User"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/account_30" />
 
                 <TextView
                     android:id="@+id/tvLogout"
@@ -63,12 +62,13 @@
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="-25dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:gravity="center"
+                android:onClick="onNextButtonClick"
                 android:text="My Profile >"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#FFFFFF"
@@ -214,12 +214,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="140dp"
                 android:foregroundGravity="bottom|center"
                 android:gravity="bottom|center"
-                android:text="V 1.0"
-                android:textStyle="bold"
-                android:textColor="#000000" />
+                android:text="Version 1.0"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:id="@+id/luvinbrait"
                 android:layout_width="wrap_content"
@@ -227,12 +228,12 @@
                 android:layout_below="@+id/txtviewsearch"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
+                android:layout_gravity="bottom|center"
                 android:layout_marginTop="5dp"
                 android:baselineAligned="false"
                 android:focusableInTouchMode="true"
-                android:foregroundGravity="center"
-                android:gravity="center|fill">
+                android:foregroundGravity="bottom|center"
+                android:gravity="bottom|center|fill">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -252,7 +253,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="-7dp"
                     android:background="@drawable/love"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:scaleX="1"
                     android:scaleY="1" />
 
@@ -279,7 +280,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
 
 
         </LinearLayout>
