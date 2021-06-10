@@ -94,9 +94,53 @@ public class HomePage extends AppCompatActivity {
         if (v.getId() == R.id.btnfillform) {
             Intent nxt = new Intent(HomePage.this, Info.class);
             startActivity(nxt);
-        } else if (v.getId() == R.id.btnconult) {
+        }
+        else if (v.getId() == R.id.tvUserName) {
+            GotoUserProfile();
+        }
+        else if (v.getId() == R.id.tvProfile) {
+            GotoUserProfile();
+        }
+        else if (v.getId() == R.id.tvLogout) {
+            LogOut();
+        }
+        else if (v.getId() == R.id.btnconult) {
             Toast.makeText(HomePage.this, "Coming Soon..... \n With many other Features", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void GotoUserProfile(){
+        Intent userprofile = new Intent(HomePage.this, UserProfile.class);
+        startActivity(userprofile);
+    }
+    private void LogOut(){
+        androidx.appcompat.app.AlertDialog.Builder builder;
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new androidx.appcompat.app.AlertDialog.Builder(HomePage.this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new androidx.appcompat.app.AlertDialog.Builder(HomePage.this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
+        }
+        builder.setTitle("Alert")
+                .setIcon(R.drawable.ic_info)
+                .setMessage("Do you really want to logout")
+                .setCancelable(false)
+                .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                        mAuth.signOut();
+                        Toast.makeText(HomePage.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();                        Intent logout = new Intent(HomePage.this,MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(logout);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                       dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
 
 }

@@ -15,6 +15,7 @@
         android:theme="@style/Theme.Firstdoctor">
         <activity android:name=".Examination_one" />
         <activity android:name=".History_two" />
+        <activity android:name=".UserProfile" />
         <activity android:name=".History_one" />
         <activity android:name=".Complain" />
         <activity android:name=".Info" />
