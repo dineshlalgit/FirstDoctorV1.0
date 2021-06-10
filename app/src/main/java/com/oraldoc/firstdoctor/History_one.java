@@ -240,7 +240,7 @@ public class History_one extends AppCompatActivity {
                  loadingBar.setTitle("Saving Details");
                  loadingBar.setMessage("Please wait, While we are saving your details.");
                  loadingBar.show();
-                 loadingBar.setCanceledOnTouchOutside(true);
+                 loadingBar.setCanceledOnTouchOutside(false);
                  StoreHistroy1Data();
             }
         }

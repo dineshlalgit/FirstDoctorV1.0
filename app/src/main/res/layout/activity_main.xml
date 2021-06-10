@@ -129,15 +129,16 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvforgotpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:foregroundGravity="right"
                     android:gravity="right"
+                    android:onClick="onButtonClick"
                     android:text="Forgot Password?"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <CheckBox
