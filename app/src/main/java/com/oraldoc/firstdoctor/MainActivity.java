@@ -1,9 +1,14 @@
 package com.oraldoc.firstdoctor;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -53,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
 //        google_bt.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "Google sign button in progress", Toast.LENGTH_SHORT).show();
-////                Intent SignInGoogleB = new Intent(MainActivity.this, Examination_one.class);
-////                startActivity(SignInGoogleB);
+////                Toast.makeText(MainActivity.this, "Google sign button in progress", Toast.LENGTH_SHORT).show();
+//                Intent SignInGoogleB = new Intent(MainActivity.this, Complain.class);
+//                startActivity(SignInGoogleB);
 //            }
 //        });
 //        signIn_bt.setOnClickListener(new View.OnClickListener() {
@@ -166,5 +172,86 @@ public class MainActivity extends AppCompatActivity {
 //        else if(v.getId() == R.id.btnverify) {
 //            setContentView(R.layout.activity_login);
 //        }
+        else if(v.getId() == R.id.tvforgotpass){
+            showRecoverPasswordDialog();
+        }
+    }
+
+    private void showRecoverPasswordDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Recover Password");
+        LinearLayout linearLayout=new LinearLayout(this);
+        final EditText emailet= new EditText(this);
+
+        // write the email using which you registered
+        emailet.setHint("Enter your registered email address");
+        emailet.setMinEms(16);
+        emailet.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        linearLayout.addView(emailet);
+        linearLayout.setPadding(10,10,10,10);
+        builder.setView(linearLayout);
+
+        // Click on Recover and a email will be sent to your registered email id
+        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                String emaill=emailet.getText().toString().trim();
+                if(emaill.isEmpty()){
+                    emailet.setError("Please enter your email ID");
+                }
+                else{
+                    dialog.dismiss();
+                    beginRecovery(emaill);
+                }
+            }
+        });
+    }
+    private void beginRecovery(String emaill) {
+        loadingBar=new ProgressDialog(this);
+        loadingBar.setMessage("Sending Email....");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+
+        // calling sendPasswordResetEmail
+        // open your email and write the new
+        // password and then you can login
+        mAuth.sendPasswordResetEmail(emaill).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                loadingBar.dismiss();
+                if(task.isSuccessful())
+                {
+                    // if isSuccessful then done messgae will be shown
+                    // and you can change the password
+                    Toast.makeText(MainActivity.this,"Email sent please follow the link in email to rest password",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"Error Occured",Toast.LENGTH_LONG).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                loadingBar.dismiss();
+                Toast.makeText(MainActivity.this,"Error Failed",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

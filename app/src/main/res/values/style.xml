@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- CustomCardCorners -->
-    <style name="CustomCardCorners" parent="@style/Widget.MaterialComponents.CardView">
+    <style name="CustomCardCorners" parent="Theme.MaterialComponents">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance_custom_corners</item>
     </style>
 
@@ -10,5 +10,11 @@
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeBottomRight">30dp</item>
         <item name="cornerSizeBottomLeft">30dp</item>
+
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.Card.Media" parent="">
+        <item name="cornerSizeBottomLeft">30dp</item>
+        <item name="cornerSizeBottomRight">30dp</item>
     </style>
 </resources>

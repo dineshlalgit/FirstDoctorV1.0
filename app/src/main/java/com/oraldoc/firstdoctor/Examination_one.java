@@ -180,7 +180,7 @@ public class Examination_one extends AppCompatActivity {
                 loadingBar.setTitle("Saving Details");
                 loadingBar.setMessage("Please wait, While we are saving your details.");
                 loadingBar.show();
-                loadingBar.setCanceledOnTouchOutside(true);
+                loadingBar.setCanceledOnTouchOutside(false);
                 StoreExaminationData();
             }
         }
@@ -306,7 +306,7 @@ public class Examination_one extends AppCompatActivity {
                     }
                     builder.setTitle("Confirmation")
 //                .setIcon(R.drawable.ic_info)
-                            .setMessage("Your Details is submitted to our Doctors successfully, please wait till we get back to you with the solution")
+                            .setMessage("Successfully Uploaded Details, we will get back to you soon")
                             .setPositiveButton("Ok, Visit Home", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // do nothing

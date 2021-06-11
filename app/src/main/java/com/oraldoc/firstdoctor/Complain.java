@@ -37,7 +37,7 @@ public class Complain extends AppCompatActivity {
     private String
             strchkbxBleedingGums,strchkbxInability,strchkbxDiscolored,strchkbxTeeth,strchxbxSwelling, strchxbxGrowth,strchxbxPain,strchkbxrightjaw,strchkbxleftjaw,strchkbxupperjaw,strchkbxlowerjaw,
             strtilotherPainIncrease,strtilotherPainDecrease,stretdays,
-            strSufferingTime,strPainType,strPainIncrease,strPainDecrease;
+            strSufferingTime,strPainType,strPainType2,strPainIncrease,strPainDecrease;
 
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
@@ -154,6 +154,10 @@ public class Complain extends AppCompatActivity {
     public String onRadioButtonClicked(View view) {
         TextInputLayout tilotherPainIncrease = (TextInputLayout)findViewById(R.id.tftilay_otherPainIncrease);
         TextInputLayout tilotherPainDecrease = (TextInputLayout)findViewById(R.id.tftilay_otherPainDecrease);
+        TextInputLayout tietdayslayout = (TextInputLayout)findViewById(R.id.tftilayout_sufferingdays);
+        TextInputEditText tilotherPainIncreaseText = (TextInputEditText)findViewById(R.id.tftilay_otherPainIncreaseValue);
+        TextInputEditText tilotherPainDecreaseText = (TextInputEditText)findViewById(R.id.tftilay_otherPainDecreaseValue);
+        tietdays = (TextInputEditText) findViewById(R.id.tftilay_sufferingdays);
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -161,30 +165,51 @@ public class Complain extends AppCompatActivity {
         switch(view.getId()) {
 
             //suffering from
+            case R.id.radio_day:
+                if (checked){
+                    strSufferingTime = "Days";
+                    tietdayslayout.setVisibility(View.VISIBLE);
+                    tietdayslayout.requestFocus();
+                }
+                else
+                    strSufferingTime = null;
+
+                return strSufferingTime;
+
+
             case R.id.radio_week:
-                if (checked)
+                if (checked){
                     strSufferingTime = "Week";
+                    tietdayslayout.setVisibility(View.GONE);
+                    tietdays.setText("");
+                }
                 else
                     strSufferingTime = null;
 
                 return strSufferingTime;
 
             case R.id.radio_month:
-                if (checked)
+                if (checked){
                     strSufferingTime = "Month";
+                    tietdayslayout.setVisibility(View.GONE);
+                    tietdays.setText("");
+                }
                 else
                     strSufferingTime = null;
                 return strSufferingTime;
 
             case R.id.radio_years:
-                if (checked)
+                if (checked){
                     strSufferingTime = "Year";
+                    tietdayslayout.setVisibility(View.GONE);
+                    tietdays.setText("");
+                }
                 else
                     strSufferingTime = null;
                 return strSufferingTime;
 
 
-            //Pain Type
+            //Pain Type 1
             case R.id.radio_sharp:
                 if (checked)
                     strPainType = "Sharp";
@@ -206,13 +231,6 @@ public class Complain extends AppCompatActivity {
                     strPainType = null;
                     return strPainType;
 
-            case R.id.radio_continuous:
-                if (checked)
-                    strPainType = "Continuous";
-                else
-                    strPainType = null;
-                return strPainType;
-
             case R.id.radio_nopain:
                 if (checked)
                     strPainType = "No pain";
@@ -220,18 +238,29 @@ public class Complain extends AppCompatActivity {
                     strPainType = null;
                 return strPainType;
 
+                    //Pain type 2
+
+            case R.id.radio_continuous:
+                if (checked)
+                    strPainType2 = "Continuous";
+                else
+                    strPainType2 = null;
+                return strPainType2;
+
+
             case R.id.radio_intermittent:
                 if (checked)
-                    strPainType = "Intermittent";
+                    strPainType2 = "Intermittent";
                 else
-                    strPainType = null;
-                return strPainType;
+                    strPainType2 = null;
+                return strPainType2;
 
             //Pain Increase on
             case R.id.radio_hotfood:
                 if (checked) {
                     strPainIncrease = "Hot Food";
                     tilotherPainIncrease.setVisibility(View.GONE);
+                    tilotherPainIncreaseText.setText("");
                 }
                     else
                         strPainIncrease = null;
@@ -242,6 +271,18 @@ public class Complain extends AppCompatActivity {
                 if (checked){
                     strPainIncrease = "Cold Food";
                     tilotherPainIncrease.setVisibility(View.GONE);
+                    tilotherPainIncreaseText.setText("");
+                }
+                else
+                    strPainIncrease = null;
+
+                return strPainIncrease;
+
+            case R.id.radio_NA:
+                if (checked){
+                    strPainIncrease = "Not Applicable";
+                    tilotherPainIncrease.setVisibility(View.GONE);
+                    tilotherPainIncreaseText.setText("");
                 }
                 else
                     strPainIncrease = null;
@@ -264,6 +305,7 @@ public class Complain extends AppCompatActivity {
                 if (checked) {
                     strPainDecrease = "Hot Food";
                     tilotherPainDecrease.setVisibility(View.GONE);
+                    tilotherPainDecreaseText.setText("");
                 }
                 else
                     strPainDecrease = null;
@@ -274,11 +316,24 @@ public class Complain extends AppCompatActivity {
                 if (checked){
                     strPainDecrease = "Cold Food";
                     tilotherPainDecrease.setVisibility(View.GONE);
+                    tilotherPainDecreaseText.setText("");
                 }
                 else
                     strPainDecrease = null;
 
                 return strPainDecrease;
+
+            case R.id.radio_otherNAdec:
+                if (checked){
+                    strPainDecrease = "Not Applicable";
+                    tilotherPainDecrease.setVisibility(View.GONE);
+                    tilotherPainDecreaseText.setText("");
+                }
+                else
+                    strPainDecrease = null;
+
+                return strPainDecrease;
+
 
             case R.id.radio_otherdec:
                 if (checked) {
@@ -366,16 +421,24 @@ public class Complain extends AppCompatActivity {
                 Toast.makeText(this, "Please select in which jaw you have problem", Toast.LENGTH_LONG).show();
                 rightjaw.requestFocus();
             }
-            else if (stretdays.isEmpty()) {
-                tietdays.setError("Please Enter the no.of day");
-                tietdays.requestFocus();
-            }
+//            else if (stretdays.isEmpty()) {
+//                tietdays.setError("Please Enter the no.of day");
+//                tietdays.requestFocus();
+//            }
             else if (strSufferingTime == null){
                 Toast.makeText(this, "Please select from when you are suffering from", Toast.LENGTH_SHORT).show();
                 time.requestFocus();
             }
+            else if (strSufferingTime.equals("Days") && (stretdays.isEmpty())){
+                tietdays.setError("Please enter no of days you are suffering from");
+                tietdays.requestFocus();
+            }
             else if (strPainType == null){
                 Toast.makeText(this, "Please select type of pain your suffering from", Toast.LENGTH_SHORT).show();
+                pain.requestFocus();
+            }
+            else if (strPainType2 == null){
+                Toast.makeText(this, "Please select type of pain your suffering from Intermittent/Continuous", Toast.LENGTH_SHORT).show();
                 pain.requestFocus();
             }
             else if (strPainIncrease == null){
@@ -398,7 +461,7 @@ public class Complain extends AppCompatActivity {
                 loadingBar.setTitle("Saving Details");
                 loadingBar.setMessage("Please wait, While we are saving your details.");
                 loadingBar.show();
-                loadingBar.setCanceledOnTouchOutside(true);
+                loadingBar.setCanceledOnTouchOutside(false);
                 StoreComplainData();
             }
         }
@@ -428,6 +491,7 @@ public class Complain extends AppCompatActivity {
         userMap.put("Complaindays", stretdays);
         userMap.put("ComplainSufferingTime", strSufferingTime);
         userMap.put("ComplainPainType", strPainType);
+        userMap.put("ComplainPainType2", strPainType2);
         userMap.put("ComplainPainIncrease", strPainIncrease);
         userMap.put("ComplainotherPainIncrease", strtilotherPainIncrease);
         userMap.put("ComplainPainDecrease", strPainDecrease);

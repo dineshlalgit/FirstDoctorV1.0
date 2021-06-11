@@ -5,8 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-
+<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,22 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Firstdoctor">
+        <activity android:name=".Examination_one" />
+        <activity android:name=".History_two" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".History_one" />
+        <activity android:name=".Complain" />
+        <activity android:name=".Info" />
+        <activity android:name=".HomePage" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".MainActivity"/>
+
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Examination_one" />
-        <activity android:name=".History_two" />
-        <activity android:name=".History_one" />
-        <activity android:name=".Complain" />
-        <activity android:name=".Info" />
-        <activity android:name=".HomePage" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity">
-
         </activity>
     </application>
 
