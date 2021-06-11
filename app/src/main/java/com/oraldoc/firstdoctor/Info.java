@@ -32,8 +32,8 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Info extends AppCompatActivity {
-    private TextInputEditText tietName,tietAge,tietAddress,tietCity,tietZip,tietMobile;
-    private String stringName,stringAge,stringAddress,stringCity,stringZip,stringMobile,stringGndr,stringChkbox,stringChkboxCon,stringChkboxckd;
+    private TextInputEditText tietName,tietAge,tietAddress,tietCity,tietZip,tietEmail,tietMobile;
+    private String stringName,stringAge,stringAddress,stringCity,stringZip,stringEmail,stringMobile,stringGndr,stringChkbox,stringChkboxCon,stringChkboxckd,stringComplianfor;
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
     private DatabaseReference UsersRef;
@@ -71,6 +71,18 @@ public class Info extends AppCompatActivity {
                 if (checked)
                     stringGndr = "other";
                 return stringGndr;
+
+            case R.id.radio_self:
+                if (checked)
+                    ComplainSelfData();
+                stringComplianfor = "For-self-";
+                return stringComplianfor;
+
+            case R.id.radio_complainother:
+                if (checked)
+                    ComplainOtherData();
+                stringComplianfor = "For-other-";
+                return stringComplianfor;
         }
         return null;
     }
@@ -149,7 +161,10 @@ public class Info extends AppCompatActivity {
 
             stringChkboxckd = stringChkbox+(stringChkboxCon);
 
-            if (stringName.isEmpty() || stringName.length()<3 || (!stringName.matches("[A-Za-z0-9 ]*"))){
+            if (stringComplianfor == null){
+                Toast.makeText(this, "Please select for whom you are complaining for!", Toast.LENGTH_SHORT).show();
+            }
+            else if (stringName.isEmpty() || stringName.length()<3 || (!stringName.matches("[A-Za-z0-9 ]*"))){
                 tietName.setError("Mandatory field / Invalid Input");
                 tietName.requestFocus();
             }
@@ -187,15 +202,18 @@ public class Info extends AppCompatActivity {
                 StoreInfoData();
             }
         }
+        else if(v.getId() == R.id.btnclrform){
+            ComplainOtherData();
+        }
     }
 
     private void StoreInfoData() {
 
         Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
 
         currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(currentDate);
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(stringComplianfor+(currentDate));
 
         HashMap<String, Object> userMap = new HashMap<>();
 
@@ -259,5 +277,101 @@ public class Info extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void ComplainSelfData(){
+        mAuth = FirebaseAuth.getInstance();
+        String currentUserID;
+        loadingBar = new ProgressDialog(this);
+
+        loadingBar.setTitle("Getting Info");
+        loadingBar.setMessage("Please wait, While we are fetching your details.");
+        loadingBar.show();
+        loadingBar.setCanceledOnTouchOutside(false);
+
+        currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+        tietName = (TextInputEditText)findViewById(R.id.tietname);
+        tietAge = (TextInputEditText)findViewById(R.id.tietage);
+        tietEmail = (TextInputEditText)findViewById(R.id.tietEmail);
+        tietMobile = (TextInputEditText)findViewById(R.id.tietmobile);
+        RadioButton radiomale = (RadioButton)findViewById(R.id.radio_male);
+        RadioButton radiofemale = (RadioButton)findViewById(R.id.radio_female);
+        RadioButton radioother = (RadioButton)findViewById(R.id.radio_other);
+
+        UsersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+
+                    String currentUserID,strtvUserName,strtvUserAge,strtvUserEmail,strtvUserMobile,strvUserGender;
+
+                    //Personal Details
+                    strtvUserName = snapshot.child("userName").getValue().toString();
+                    strtvUserAge = snapshot.child("userAge").getValue().toString();
+                    strtvUserEmail = snapshot.child("userEmail").getValue().toString();
+                    strtvUserMobile = snapshot.child("userMobile").getValue().toString();
+                    strvUserGender = snapshot.child("userSex").getValue().toString();
+//
+                    tietName.setText(strtvUserName);
+                    tietAge.setText(strtvUserAge);
+                    tietEmail.setText(strtvUserEmail);
+                    tietMobile.setText(strtvUserMobile);
+
+                    switch (strvUserGender) {
+                        case "male":
+                            radiomale.setChecked(true);;
+                            radiofemale.setChecked(false);
+                            radioother.setChecked(false);
+                            break;
+                        case "female":
+                            radiomale.setChecked(false);
+                            radiofemale.setChecked(true);
+                            radioother.setChecked(false);
+                            break;
+                        case "other":
+                            radiomale.setChecked(false);
+                            radiofemale.setChecked(false);
+                            radioother.setChecked(true);
+                            break;
+                    }
+
+                    loadingBar.dismiss();
+                }
+                else{
+                    Toast.makeText(Info.this, "Error updating", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void ComplainOtherData(){
+        tietName = (TextInputEditText)findViewById(R.id.tietname);
+        tietAge = (TextInputEditText)findViewById(R.id.tietage);
+        tietEmail = (TextInputEditText)findViewById(R.id.tietEmail);
+        tietMobile = (TextInputEditText)findViewById(R.id.tietmobile);
+        tietAddress = (TextInputEditText)findViewById(R.id.tietaddress);
+        tietCity = (TextInputEditText)findViewById(R.id.tietcity);
+        tietZip = (TextInputEditText)findViewById(R.id.tietzip);
+        RadioButton radiomale = (RadioButton)findViewById(R.id.radio_male);
+        RadioButton radiofemale = (RadioButton)findViewById(R.id.radio_female);
+        RadioButton radioother = (RadioButton)findViewById(R.id.radio_other);
+
+        tietName.setText(null);
+        tietAge.setText(null);
+        tietEmail.setText(null);
+        tietMobile.setText(null);
+        tietAddress.setText(null);
+        tietCity.setText(null);
+        tietZip.setText(null);
+
+        radiomale.setChecked(false);
+        radiofemale.setChecked(false);
+        radioother.setChecked(false);
     }
 }
