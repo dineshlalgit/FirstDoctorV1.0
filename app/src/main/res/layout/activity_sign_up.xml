@@ -67,6 +67,7 @@
                 android:background="@drawable/bt_shape"
                 android:drawableStart="@drawable/name_24"
                 android:hint=" Name"
+                android:inputType="text"
                 android:maxLength="50"
                 android:textColor="@color/bg_color"
                 android:textColorHint="@color/bg_color" />
@@ -155,6 +156,7 @@
                 android:background="@drawable/bt_shape"
                 android:drawableStart="@drawable/email24"
                 android:hint=" Email Id"
+                android:inputType="textEmailAddress"
                 android:maxLength="60"
                 android:textColor="@color/bg_color"
                 android:textColorHint="@color/bg_color" />
@@ -193,6 +195,7 @@
                 android:background="@drawable/bt_shape"
                 android:drawableStart="@drawable/password_24"
                 android:hint=" Password"
+                android:inputType="textWebPassword"
                 android:maxLength="18"
                 android:textColor="@color/bg_color"
                 android:textColorHint="@color/bg_color" />
@@ -222,6 +225,7 @@
                 android:background="@drawable/bt_shape"
                 android:drawableStart="@drawable/password_24"
                 android:hint=" Confirm Password"
+                android:inputType="textPassword|textWebPassword"
                 android:maxLength="18"
                 android:textColor="@color/bg_color"
                 android:textColorHint="@color/bg_color" />
