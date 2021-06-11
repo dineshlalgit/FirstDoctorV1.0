@@ -61,27 +61,40 @@ public class Info extends AppCompatActivity {
             case R.id.radio_male:
                 if (checked)
                     stringGndr = "male";
+                else
+                    stringGndr=null;
+
                 return stringGndr;
             case R.id.radio_female:
                 if (checked)
                     stringGndr = "female";
+                else
+                    stringGndr=null;
                 return stringGndr;
 
             case R.id.radio_other:
                 if (checked)
                     stringGndr = "other";
+                else
+                    stringGndr=null;
                 return stringGndr;
 
             case R.id.radio_self:
-                if (checked)
+                if (checked) {
                     ComplainSelfData();
-                stringComplianfor = "For-self-";
+                    stringComplianfor = "For-self-";
+                }
+                else
+                stringGndr=null;
                 return stringComplianfor;
 
             case R.id.radio_complainother:
-                if (checked)
+                if (checked) {
                     ComplainOtherData();
-                stringComplianfor = "For-other-";
+                    stringComplianfor = "For-other-";
+                }
+                else
+                stringGndr=null;
                 return stringComplianfor;
         }
         return null;
@@ -164,11 +177,11 @@ public class Info extends AppCompatActivity {
             if (stringComplianfor == null){
                 Toast.makeText(this, "Please select for whom you are complaining for!", Toast.LENGTH_SHORT).show();
             }
-            else if (stringName.isEmpty() || stringName.length()<3 || (!stringName.matches("[A-Za-z0-9 ]*"))){
+            else if (stringName.isEmpty() || stringName.length()<3 || (!stringName.matches("[A-Za-z ]*"))){
                 tietName.setError("Mandatory field / Invalid Input");
                 tietName.requestFocus();
             }
-            else if (stringAge.isEmpty() || stringAge.length()>2 || (!stringAge.matches("[A-Za-z0-9]*"))){
+            else if (stringAge.isEmpty() || stringAge.length()>2 || (!stringAge.matches("[0-9]*"))){
                 tietAge.setError("Mandatory field / Invalid Input");
                 tietAge.requestFocus();
             }
@@ -179,7 +192,7 @@ public class Info extends AppCompatActivity {
                 tietAddress.setError("Mandatory field / Invalid Input ");
                 tietAddress.requestFocus();
             }
-            else if (stringCity.isEmpty() || stringCity.length()<4 || (!stringCity.matches("[A-Za-z0-9 ]*"))){
+            else if (stringCity.isEmpty() || stringCity.length()<4 || (!stringCity.matches("[A-Za-z ]*"))){
                 tietCity.setError("Mandatory field / Invalid Input");
                 tietCity.requestFocus();
             }
