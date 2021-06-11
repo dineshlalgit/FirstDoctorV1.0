@@ -17,28 +17,25 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-//        timer = new Thread() {
-//            @Override
-//            public void run() {
-//                try {
-//                    synchronized (this) {
-//                        wait(2000);
-//                    }
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                } finally {
-//                    Intent intent = new Intent(Splash.this, MainActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//            }
-//        };
-//        timer.start();
+        timer = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    synchronized (this) {
+                        wait(2000);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    CheckLogin();
+                }
+            }
+        };
+        timer.start();
     }
-    @Override
-    public void onStart() {
+    public void CheckLogin() {
         mAuth = FirebaseAuth.getInstance();
-        super.onStart();
+//        super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){

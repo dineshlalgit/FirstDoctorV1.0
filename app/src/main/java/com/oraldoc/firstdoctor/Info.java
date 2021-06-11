@@ -70,6 +70,7 @@ public class Info extends AppCompatActivity {
                     stringGndr = "female";
                 else
                     stringGndr=null;
+
                 return stringGndr;
 
             case R.id.radio_other:
@@ -77,6 +78,7 @@ public class Info extends AppCompatActivity {
                     stringGndr = "other";
                 else
                     stringGndr=null;
+
                 return stringGndr;
 
             case R.id.radio_self:
@@ -85,7 +87,8 @@ public class Info extends AppCompatActivity {
                     stringComplianfor = "For-self-";
                 }
                 else
-                stringGndr=null;
+                    stringComplianfor=null;
+
                 return stringComplianfor;
 
             case R.id.radio_complainother:
@@ -94,7 +97,8 @@ public class Info extends AppCompatActivity {
                     stringComplianfor = "For-other-";
                 }
                 else
-                stringGndr=null;
+                    stringComplianfor=null;
+
                 return stringComplianfor;
         }
         return null;
@@ -333,18 +337,12 @@ public class Info extends AppCompatActivity {
 
                     switch (strvUserGender) {
                         case "male":
-                            radiomale.setChecked(true);;
-                            radiofemale.setChecked(false);
-                            radioother.setChecked(false);
+                            radiomale.setChecked(true);
                             break;
                         case "female":
-                            radiomale.setChecked(false);
                             radiofemale.setChecked(true);
-                            radioother.setChecked(false);
                             break;
                         case "other":
-                            radiomale.setChecked(false);
-                            radiofemale.setChecked(false);
                             radioother.setChecked(true);
                             break;
                     }
