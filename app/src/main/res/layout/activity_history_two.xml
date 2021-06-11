@@ -450,6 +450,8 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:inputType="text"
+                                android:maxLength="100"
                                 android:hint="Pls mention the Condition "
                                 android:textColorHint="@color/bg_color"
                                 android:textColor="@color/bg_color" />

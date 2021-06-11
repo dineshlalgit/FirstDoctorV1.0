@@ -353,6 +353,7 @@
                             android:layout_height="match_parent"
                             android:hint="Days"
                             android:maxLength="2"
+                            android:inputType="text"
                             android:textColorHint="@color/bg_color"
                             android:textColor="@color/bg_color"                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -515,7 +516,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Pls mention the reason "
-                            android:maxLength="50"
+                            android:inputType="text"
+                            android:maxLength="100"
                             android:textColorHint="@color/bg_color"
                             android:textColor="@color/bg_color"                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -593,6 +595,8 @@
                             android:textColorHint="@color/bg_color"
                             android:textColor="@color/bg_color"                             android:textSize="18sp"
                             android:textStyle="bold"
+                            android:inputType="text"
+                            android:maxLength="100"
                             android:hint="Pls mention the reason " />
                     </com.google.android.material.textfield.TextInputLayout>
 

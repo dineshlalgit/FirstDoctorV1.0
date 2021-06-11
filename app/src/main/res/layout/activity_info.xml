@@ -157,6 +157,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Name"
+                            android:inputType="text"
                             android:maxLength="50"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
@@ -172,6 +173,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Age"
+                            android:inputType="number"
                             android:maxLength="2"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
@@ -235,6 +237,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Address"
+                            android:inputType="textMultiLine|textPostalAddress"
                             android:maxLength="500"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
@@ -250,6 +253,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="City/Town/Village"
+                            android:inputType="text"
                             android:maxLength="100"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
@@ -265,6 +269,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Zip Code"
+                            android:inputType="number"
                             android:maxLength="6"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
@@ -280,7 +285,8 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:hint="Email ID"
-                            android:maxLength="20"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="30"
                             android:textColor="@color/bg_color"
                             android:textColorHint="@color/bg_color" />
                     </com.google.android.material.textfield.TextInputLayout>

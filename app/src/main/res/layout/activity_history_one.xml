@@ -22,7 +22,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_margin="8dp"
+                android:layout_margin="5dp"
                 android:layout_weight="0"
                 android:scaleType="fitXY"
                 android:src="@drawable/history_pogress"
@@ -33,23 +33,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_weight="8"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:textColor="#000000">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Info"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    android:textColor="#000000" />
+
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvLogout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Complaints"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -57,17 +59,17 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="History"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#0000E4"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Examination"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    android:textColor="#000000" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -272,7 +274,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:onClick="onCheckboxClicked"
-                                android:text="Underwent Recent Surgery"
+                                android:text="Not Applicable"
                                 android:textColor="#4146C8"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
