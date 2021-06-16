@@ -25,6 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 public class MainActivity extends AppCompatActivity {
     TextView signUp_txt;
     AppCompatButton signIn_bt;
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
     private DatabaseReference UsersRef;
-
+    NoInternetDialog noInternetDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 //    private void CheckUserExistence() {
 //        final String current_user_id = mAuth.getCurrentUser().getUid();
 //        UsersRef.addValueEventListener(new ValueEventListener() {
@@ -101,28 +103,23 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //
 //    }
-
-
     private void SendUserToHomePage() {
         Intent LoginIntent = new Intent(this, HomePage.class);
 //        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(LoginIntent);
         finish();
     }
-
-    private void SendUserToSignUpActivity() {
-        Intent LoginIntent = new Intent(this, SignUp.class);
-//        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(LoginIntent);
-        finish();
-    }
-
+//    private void SendUserToSignUpActivity() {
+//        Intent LoginIntent = new Intent(this, SignUp.class);
+////        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(LoginIntent);
+//        finish();
+//    }
 //    @Override
 //    protected void onStart() {
 //        super.onStart();
 //        mAuth.addAuthStateListener(authStateListener);
 //    }
-
     public void onButtonClick(View v) {
         if (v.getId() == R.id.signIn_button) {
 
@@ -132,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             stringEmail = tietEmail.getText().toString();
             stringPassword = tietPassword.getText().toString();
 
-            if (stringEmail.isEmpty() || stringEmail.length() < 5 || (!stringEmail.matches("[@.a-z0-9A-Z]*"))) {
+            if (stringEmail.isEmpty() || stringEmail.length() < 5 || (!android.util.Patterns.EMAIL_ADDRESS.matcher(stringEmail).matches())) {
                 tietEmail.setError("Mandatory field / Invalid Input");
                 tietEmail.requestFocus();
             } else if (stringPassword.isEmpty() || stringPassword.length() < 8 || (!stringPassword.matches("[A-Za-z0-9]*"))) {
@@ -213,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String emaill=emailet.getText().toString().trim();
-                if(emaill.isEmpty()){
+                if(stringEmail.isEmpty() || stringEmail.length() < 5 || (!android.util.Patterns.EMAIL_ADDRESS.matcher(stringEmail).matches())){
                     emailet.setError("Please enter your email ID");
                 }
                 else{
@@ -223,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void beginRecovery(String emaill) {
         loadingBar=new ProgressDialog(this);
         loadingBar.setMessage("Sending Email....");
@@ -253,5 +251,42 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Error Failed",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
     }
 }

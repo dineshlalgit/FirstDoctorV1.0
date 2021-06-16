@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
@@ -37,7 +34,9 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-import java.io.InputStream;
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -60,6 +59,8 @@ public class Examination_one extends AppCompatActivity {
     ArrayList<Uri> imageList = new ArrayList<>();
     private Uri imageUri;
     private int upload_count = 0;
+    NoInternetDialog noInternetDialog;
+
 
 
     @Override
@@ -94,7 +95,7 @@ public class Examination_one extends AppCompatActivity {
 
                                 @Override
                                 public void onPermissionDenied(PermissionDeniedResponse response) {
-
+                                    upload_b.setText("Browse");
                                 }
 
                                 @Override
@@ -205,6 +206,7 @@ public class Examination_one extends AppCompatActivity {
             } else {
 
                 Toast.makeText(this, "Please Select Multiple Image", Toast.LENGTH_SHORT).show();
+                upload_b.setText("Browse");
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -234,7 +236,10 @@ public class Examination_one extends AppCompatActivity {
     }
 
     private void storeLink(String url) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("OralImage");
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("OralImage").child(currentUserID).child(currentDate);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("imgLink", url);
         databaseReference.push().setValue(hashMap);
@@ -276,10 +281,13 @@ public class Examination_one extends AppCompatActivity {
     private void StoreExaminationData() {
 
         Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
+
+        Intent intent = getIntent();
+        String ComplainFor = intent.getStringExtra("Complain");
 
         currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(currentDate);
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(ComplainFor+(currentDate));
 
         HashMap<String, Object> userMap = new HashMap<>();
 
@@ -334,6 +342,7 @@ public class Examination_one extends AppCompatActivity {
                     }
                     builder.setTitle("Error")
                             .setIcon(R.drawable.ic_info)
+                            .setCancelable(false)
                             .setMessage("Unsuccessful. \n Please try again later.\n" + mgs)
                             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
@@ -346,5 +355,42 @@ public class Examination_one extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
     }
 }

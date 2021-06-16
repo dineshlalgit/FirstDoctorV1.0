@@ -20,13 +20,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 public class HomePage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
     private String currentUserID, strtvUserName;
     private TextView tvUserName;
     private ProgressDialog loadingBar;
-
+    NoInternetDialog noInternetDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +120,34 @@ public class HomePage extends AppCompatActivity {
         else if (v.getId() == R.id.btnconult) {
             Toast.makeText(HomePage.this, "Coming Soon..... \n With many other Features", Toast.LENGTH_SHORT).show();
         }
+        else if (v.getId() == R.id.openQM) {
+            Intent nxt = new Intent(HomePage.this, QuadMonk.class);
+            startActivity(nxt);
+        }
+        else if (v.getId() == R.id.openQM1) {
+            Intent nxt = new Intent(HomePage.this, QuadMonk.class);
+            startActivity(nxt);
+        }
+        else if (v.getId() == R.id.openQM2) {
+            Intent nxt = new Intent(HomePage.this, QuadMonk.class);
+            startActivity(nxt);
+        }
+        else if (v.getId() == R.id.openQM3) {
+            Intent nxt = new Intent(HomePage.this, QuadMonk.class);
+            startActivity(nxt);
+        }
+        else if (v.getId() == R.id.openQM4) {
+            Intent nxt = new Intent(HomePage.this, QuadMonk.class);
+            startActivity(nxt);
+        }
+
     }
 
     private void GotoUserProfile(){
         Intent userprofile = new Intent(HomePage.this, UserProfile.class);
         startActivity(userprofile);
     }
+
     private void LogOut(){
         androidx.appcompat.app.AlertDialog.Builder builder;
 
@@ -152,5 +177,42 @@ public class HomePage extends AppCompatActivity {
                 .show();
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
+    }
 
 }

@@ -26,6 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -39,6 +42,8 @@ public class Info extends AppCompatActivity {
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
     String currentUserID;
+    NoInternetDialog noInternetDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,6 +229,7 @@ public class Info extends AppCompatActivity {
         userMap.put("ComplainCity", stringCity);
         userMap.put("ComplainZip", stringZip);
         userMap.put("ComplainMobile", stringMobile);
+        userMap.put("ComplainFor", stringComplianfor);
 
         UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -248,6 +254,7 @@ public class Info extends AppCompatActivity {
                                     dialog.dismiss();
                                     Intent LoginIntent = new Intent(Info.this, Complain.class);
                                     LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    LoginIntent.putExtra("Complain",stringComplianfor);
                                     startActivity(LoginIntent);
                                 }
                             })
@@ -374,4 +381,42 @@ public class Info extends AppCompatActivity {
         radiofemale.setChecked(false);
         radioother.setChecked(false);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
+    }
+
 }

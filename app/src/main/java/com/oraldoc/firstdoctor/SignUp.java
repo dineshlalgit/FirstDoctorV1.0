@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -30,6 +33,8 @@ public class SignUp extends AppCompatActivity {
     private String stringName,stringAge,stringEmail,stringMobile,stringGndr,stringPassword,stringPasswordConfirm;
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
+    NoInternetDialog noInternetDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,14 @@ public class SignUp extends AppCompatActivity {
 //        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
 
     }
+
+    private void SendUserToSignInActivity() {
+        Intent LoginIntent = new Intent(this, MainActivity.class);
+        LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(LoginIntent);
+        finish();
+    }
+
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -94,7 +107,7 @@ public class SignUp extends AppCompatActivity {
             else if (stringGndr == null){
                 Toast.makeText(this, "Please select your gender", Toast.LENGTH_SHORT).show();
             }
-            else if (stringEmail.isEmpty()){
+            else if (stringEmail.isEmpty() || stringEmail.length() < 5 || (!android.util.Patterns.EMAIL_ADDRESS.matcher(stringEmail).matches())){
                 tietEmail.setError("Mandatory field / Invalid Input ");
                 tietEmail.requestFocus();
             }
@@ -173,6 +186,9 @@ public class SignUp extends AppCompatActivity {
 
             }
         }
+        else if(v.getId() == R.id.tvSignin){
+            SendUserToSignInActivity();
+        }
 
     }
 
@@ -242,5 +258,42 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
     }
 }

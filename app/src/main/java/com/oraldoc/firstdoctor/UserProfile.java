@@ -28,6 +28,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -37,6 +40,7 @@ public class UserProfile extends AppCompatActivity {
     private String currentUserID,strtvUserName,strtvUserAge,strtvUserEmail,strtvUserMobile;
     private TextInputEditText tvUserName,tvUserAge,tvUserEmail,tvUserMobile;
     private ProgressDialog loadingBar;
+    NoInternetDialog noInternetDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,7 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
+
     public void onNextButtonClick(View v){
 
 
@@ -108,7 +113,7 @@ public class UserProfile extends AppCompatActivity {
                 tvUserAge.setError("Mandatory field / Invalid Input");
                 tvUserAge.requestFocus();
             }
-            else if (strtvUserEmail.isEmpty()){
+            else if (strtvUserEmail.isEmpty() || strtvUserEmail.length() < 5 || (!android.util.Patterns.EMAIL_ADDRESS.matcher(strtvUserEmail).matches())){
                 tvUserEmail.setError("Mandatory field / Invalid Input ");
                 tvUserEmail.requestFocus();
             }
@@ -347,7 +352,6 @@ public class UserProfile extends AppCompatActivity {
                     }
                 });
     }
-
 //    private void ChangeEmail(){
 //
 //        AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -454,4 +458,40 @@ public class UserProfile extends AppCompatActivity {
 //            }
 //        });
 //    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+//            NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
+    }
 }

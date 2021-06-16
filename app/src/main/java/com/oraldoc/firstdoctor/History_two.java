@@ -22,6 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -33,6 +36,7 @@ public class History_two extends AppCompatActivity {
     private DatabaseReference UsersRef;
     private StorageReference UserProfileImageRef;
     String currentUserID;
+    NoInternetDialog noInternetDialog;
 
 //    private String strBrush1,strBrush2,strBrushNotDaily,strFlossYes,strFlossNo,strMouthwashYes,strMouthwashNo,strCigratte,
 //                    strBedi,strCigar,strHookka,strNoSmoke,strPaan,strTobacco,strSupari,strJhartha,strSukha,strOther,
@@ -398,10 +402,13 @@ public class History_two extends AppCompatActivity {
     private void StoreHistroy2Data() {
 
         Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
+
+        Intent intent = getIntent();
+        String ComplainFor = intent.getStringExtra("Complain");
 
         currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(currentDate);
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(ComplainFor+(currentDate));
 
         HashMap<String, Object> userMap = new HashMap<>();
 
@@ -439,6 +446,8 @@ public class History_two extends AppCompatActivity {
                                     dialog.dismiss();
                                     Intent LoginIntent = new Intent(History_two.this,Examination_one.class);
                                     LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    String ComplainFor = intent.getStringExtra("Complain");
+                                    LoginIntent.putExtra("Complain",ComplainFor);
                                     startActivity(LoginIntent);
                                 }
                             })
@@ -468,6 +477,43 @@ public class History_two extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
     }
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     app:layout_anchorGravity="bottom|center"
-    tools:context=".HomePage">
+    tools:context=".QuadMonk">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/design_default_color_primary_variant"
-                android:onClick="onNextButtonClick"
                 android:orientation="horizontal">
 
                 <TextView
@@ -36,26 +35,12 @@
                     android:layout_marginBottom="20dp"
                     android:layout_weight="2"
                     android:background="@android:color/transparent"
-                    android:onClick="onNextButtonClick"
-                    android:text="Hi User"
+                    android:text="QuadMonk"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@color/white"
+                    android:textSize="30sp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/account_30" />
-
-                <TextView
-                    android:id="@+id/tvLogout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right|end"
-                    android:background="@android:color/transparent"
-                    android:drawableEnd="@drawable/logout_30"
-                    android:gravity="center|right|end"
-                    android:onClick="onNextButtonClick"
-                    android:text="Log Out"
-                    android:textColor="#FF5252"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -68,8 +53,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:gravity="center"
-                android:onClick="onNextButtonClick"
-                android:text="My Profile >"
+                android:text="Your Technical Friend"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
@@ -83,6 +67,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
+                app:cardBackgroundColor="@color/ic_launcher_background"
                 app:cardPreventCornerOverlap="false">
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -90,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/oralcancer"
+                    android:src="@drawable/quadmonklogo"
                     app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Card.Media" />
 
@@ -103,11 +88,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="-11dp"
+                android:layout_marginTop="-5dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="30dp"
-                app:cardBackgroundColor="#DA5959">
+                app:cardBackgroundColor="#0053E4">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -115,46 +100,47 @@
                     android:orientation="horizontal"
                     android:scaleType="fitXY">
 
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="0"
+                        android:baselineAlignBottom="false"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/web"
+                        tools:srcCompat="@drawable/web"></ImageView>
+
+
                     <TextView
-                        android:id="@+id/btnfillform"
+                        android:id="@+id/btnweb"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="2"
+                        android:layout_gravity="end"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:gravity="center"
                         android:onClick="onNextButtonClick"
-                        android:text="Get Free examination of Oral Cancer >"
+                        android:text="www.Quadmonk.com"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="#FFFFFF"
                         android:textSize="25sp"
                         android:textStyle="bold"
                         app:backgroundTint="@android:color/transparent" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="5"
-                        android:baselineAlignBottom="false"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/teethproblem"
-                        tools:srcCompat="@drawable/teethproblem">
-
-                    </ImageView>
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/CustomCardCornersforconsult"
+                style="@style/CustomCardCornersforform"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="#536DFE">
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="-11dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                app:cardBackgroundColor="#DF4949">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,81 +149,123 @@
                     android:scaleType="fitXY">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0"
                         android:baselineAlignBottom="false"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/doctorteeth"
-                        tools:srcCompat="@drawable/doctorteeth">
-
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/email"
+                        tools:srcCompat="@drawable/email">
                     </ImageView>
 
-                    <androidx.cardview.widget.CardView
+
+                    <TextView
+                        android:id="@+id/btnemail"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
-                        app:cardBackgroundColor="#536DFE">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:scaleType="fitXY">
-
-
-                            <TextView
-                                android:id="@+id/btnconult"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="2"
-                                android:fontFamily="sans-serif-condensed-medium"
-                                android:gravity="center"
-                                android:onClick="onNextButtonClick"
-                                android:text="Have Problem? \n Consult Now!"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                android:textColor="#FFFFFF"
-                                android:textSize="25sp"
-                                android:textStyle="bold"
-                                app:backgroundTint="@android:color/transparent" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                        android:layout_gravity="end"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:gravity="center"
+                        android:onClick="onNextButtonClick"
+                        android:text="quadmonkpb@gmail.com"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@android:color/transparent" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/CustomCardCornersforform"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="-11dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:scaleType="fitXY">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="1dp"
+                        android:layout_weight="0"
+                        android:baselineAlignBottom="false"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/fb"
+                        tools:srcCompat="@drawable/fb">
+                    </ImageView>
+
+
+                    <TextView
+                        android:id="@+id/btnfb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:gravity="center"
+                        android:onClick="onNextButtonClick"
+                        android:text="fb.me/Quadmonkpb"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#005BFA"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@android:color/transparent" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginTop="140dp"
                 android:foregroundGravity="bottom|center"
                 android:gravity="bottom|center"
                 android:text="Version Beta-1.0"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:foregroundGravity="bottom|center"
+                android:gravity="bottom|center"
+                android:text="SC : QMFDA001APK"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
             <LinearLayout
-                android:id="@+id/openQM"
+                android:id="@+id/luvinbrait"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtviewsearch"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="bottom|center"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:baselineAligned="false"
-                android:onClick="onNextButtonClick"
                 android:focusableInTouchMode="true"
                 android:foregroundGravity="bottom|center"
                 android:gravity="bottom|center|fill">
 
                 <TextView
-                    android:id="@+id/openQM1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -245,43 +273,38 @@
                     android:scrollbarAlwaysDrawHorizontalTrack="false"
                     android:text="Made with"
                     android:textAlignment="center"
-                    android:onClick="onNextButtonClick"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/openQM2"
                     android:layout_width="62dp"
                     android:layout_height="53dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="-7dp"
                     android:background="@drawable/love"
-                    android:onClick="onNextButtonClick"
                     android:scaleType="centerCrop"
                     android:scaleX="1"
                     android:scaleY="1" />
 
                 <TextView
-                    android:id="@+id/openQM3"
+                    android:id="@+id/textView21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:gravity="center_horizontal"
                     android:text="by"
                     android:textAlignment="center"
-                    android:onClick="onNextButtonClick"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/openQM4"
+                    android:id="@+id/textView23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="QuadMonk"
-                    android:onClick="onNextButtonClick"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18sp"

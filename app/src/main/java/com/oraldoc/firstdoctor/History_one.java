@@ -31,16 +31,22 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
+
+import org.imaginativeworld.oopsnointernet.ConnectionCallback;
+import org.imaginativeworld.oopsnointernet.NoInternetDialog;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class History_one extends AppCompatActivity {
@@ -58,6 +64,7 @@ public class History_one extends AppCompatActivity {
     private Uri imageUri;
     private int upload_count = 0;
 
+    NoInternetDialog noInternetDialog;
 
     private String strHyper, strMedication, strBleeding, strCardiac, strGastric, strSurgery, strAllergy, strAsthma, strJaundice, strDiabetic, strEpilepsy,strConditionNA, strOtherCondition, strOtherConditionValue;
 
@@ -68,6 +75,7 @@ public class History_one extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Image Uploading Please Wait....");
+        progressDialog.setCanceledOnTouchOutside(false);
         upload = findViewById(R.id.btnUpload);
         fileTitle = findViewById(R.id.fileTitle);
         UserProfileImageRef = FirebaseStorage.getInstance().getReference();
@@ -78,10 +86,11 @@ public class History_one extends AppCompatActivity {
                 String bString = upload.getText().toString();
                 if (bString.equals("Browse")) {
                     Dexter.withActivity(History_one.this)
-                            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            .withListener(new PermissionListener() {
+//                            .withPermission(Manifest.permission.CAMERA)
+                            .withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                            .withListener(new MultiplePermissionsListener() {
                                 @Override
-                                public void onPermissionGranted(PermissionGrantedResponse response) {
+                                public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
                                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                                     intent.setType("image/*");
                                     intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -89,15 +98,29 @@ public class History_one extends AppCompatActivity {
                                 }
 
                                 @Override
-                                public void onPermissionDenied(PermissionDeniedResponse response) {
-
-                                }
-
-                                @Override
-                                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-                                    token.continuePermissionRequest();
+                                public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
+                                    upload.setText("Browse");
                                 }
                             }).check();
+//                            .withListener(new PermissionListener() {
+//                                @Override
+//                                public void onPermissionGranted(PermissionGrantedResponse response) {
+////                                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+////                                    intent.setType("image/*");
+////                                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+////                                    startActivityForResult(Intent.createChooser(intent, "Please select Image"), PICK_IMAGE);
+//                                }
+//
+//                                @Override
+//                                public void onPermissionDenied(PermissionDeniedResponse response) {
+//
+//                                }
+//
+//                                @Override
+//                                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+//                                    token.continuePermissionRequest();
+//                                }
+//                            }).check();
                     upload.setText("Upload");
                 } else {
                     uploadtofirebase();
@@ -197,12 +220,12 @@ public class History_one extends AppCompatActivity {
                 return strDiabetic;
 
             case R.id.chkbxConditionNA:
-                            if (checked)
-                                strConditionNA = "Not Applicable";
-                            else
-                                strConditionNA = null;
+                if (checked)
+                    strConditionNA = "Not Applicable";
+                else
+                    strConditionNA = null;
 
-                            return strConditionNA;
+                return strConditionNA;
 
             case R.id.chkbxEpilepsy:
                 if (checked)
@@ -214,7 +237,6 @@ public class History_one extends AppCompatActivity {
         }
         return null;
     }
-
 
     public void onRadioButtonClicked(View view) {
         TextInputLayout tilother = (TextInputLayout) findViewById(R.id.tftilay_othercondition);
@@ -272,7 +294,6 @@ public class History_one extends AppCompatActivity {
 
     }
 
-
     public void onNextButtonClick(View v) {
 
         TextInputEditText tiet_otherconditionValue;
@@ -321,7 +342,7 @@ public class History_one extends AppCompatActivity {
                 fileTitle.setText("You have selected" + imageList.size() + "Images");
             } else {
 
-                Toast.makeText(this, "Please Select Multiple Image", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please Select One Image", Toast.LENGTH_SHORT).show();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -364,10 +385,13 @@ public class History_one extends AppCompatActivity {
     private void StoreHistroy1Data() {
 
         Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
+
+        Intent intent = getIntent();
+        String ComplainFor = intent.getStringExtra("Complain");
 
         currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(currentDate);
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child(ComplainFor+(currentDate));
 
         HashMap<String, Object> userMap = new HashMap<>();
 
@@ -408,6 +432,8 @@ public class History_one extends AppCompatActivity {
                                     dialog.dismiss();
                                     Intent LoginIntent = new Intent(History_one.this, History_two.class);
                                     LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    String ComplainFor = intent.getStringExtra("Complain");
+                                    LoginIntent.putExtra("Complain",ComplainFor);
                                     startActivity(LoginIntent);
                                 }
                             })
@@ -436,5 +462,42 @@ public class History_one extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        NoInternetDialog noInternetDialog;
+
+        NoInternetDialog.Builder builder1 = new NoInternetDialog.Builder(this);
+
+        builder1.setConnectionCallback(new ConnectionCallback() { // Optional
+            @Override
+            public void hasActiveConnection(boolean hasActiveConnection) {
+            }
+        });
+        builder1.setCancelable(false); // Optional
+        builder1.setNoInternetConnectionTitle("No Internet"); // Optional
+        builder1.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        builder1.setShowInternetOnButtons(true); // Optional
+        builder1.setPleaseTurnOnText("Please turn on"); // Optional
+        builder1.setWifiOnButtonText("Wifi"); // Optional
+        builder1.setMobileDataOnButtonText("Mobile data"); // Optional
+
+        builder1.setOnAirplaneModeTitle("No Internet"); // Optional
+        builder1.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
+        builder1.setPleaseTurnOffText("Please turn off"); // Optional
+        builder1.setAirplaneModeOffButtonText("Airplane mode"); // Optional
+        builder1.setShowAirplaneModeOffButtons(true); // Optional
+
+        noInternetDialog = builder1.build();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (noInternetDialog != null) {
+            noInternetDialog.destroy();
+        }
     }
 }
